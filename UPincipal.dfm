@@ -1,0 +1,55 @@
+object FPrincipal: TFPrincipal
+  Left = 0
+  Top = 0
+  Align = alClient
+  Caption = 'Sistema Green Space'
+  ClientHeight = 782
+  ClientWidth = 1060
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  Menu = MainMenu1
+  OldCreateOrder = False
+  WindowState = wsMaximized
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  PixelsPerInch = 96
+  TextHeight = 13
+  object PTarefa: TPanel
+    Left = 0
+    Top = 0
+    Width = 1060
+    Height = 782
+    Align = alClient
+    TabOrder = 0
+  end
+  object MainMenu1: TMainMenu
+    Left = 8
+    Top = 8
+    object Cadastro1: TMenuItem
+      Caption = 'Cadastro'
+      object Entidade1: TMenuItem
+        Caption = 'Entidade'
+        OnClick = Entidade1Click
+      end
+      object Produto1: TMenuItem
+        Caption = 'Produto'
+        OnClick = Produto1Click
+      end
+    end
+    object Movimento1: TMenuItem
+      Caption = 'Movimento'
+      object Compra1: TMenuItem
+        Caption = 'Compra'
+        OnClick = Compra1Click
+      end
+      object Venda1: TMenuItem
+        Caption = 'Venda'
+        OnClick = Venda1Click
+      end
+    end
+  end
+end

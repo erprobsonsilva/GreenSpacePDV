@@ -130,6 +130,14 @@
             <Form>FRelatorio</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="URelatorioFiltro.pas">
+            <Form>FRelatorioFiltro</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="URelatorioVendaPagamento.pas">
+            <Form>FRelatorioVendaPagamento</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

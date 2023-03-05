@@ -82,17 +82,27 @@ object FRelatorio: TFRelatorio
       Borders.DrawTop = False
       Borders.DrawRight = False
       Borders.DrawBottom = True
-      object RLDBText2: TRLDBText
+      object RLDBText1: TRLDBText
         Left = 3
         Top = 0
-        Width = 75
+        Width = 86
         Height = 16
         Align = faTopOnly
-        DataField = 'cod_produto'
+        DataField = 'tp_pagamento'
         DataSource = DsGeral
         Text = ''
       end
-      object RLDBText6: TRLDBText
+      object RLDBText2: TRLDBText
+        Left = 104
+        Top = 0
+        Width = 36
+        Height = 16
+        Align = faTopOnly
+        DataField = 'nome'
+        DataSource = DsGeral
+        Text = ''
+      end
+      object RLDBText3: TRLDBText
         Left = 324
         Top = 0
         Width = 67
@@ -102,23 +112,13 @@ object FRelatorio: TFRelatorio
         DataSource = DsGeral
         Text = ''
       end
-      object RLDBText7: TRLDBText
-        Left = 598
+      object RLDBText4: TRLDBText
+        Left = 590
         Top = 0
-        Width = 36
+        Width = 101
         Height = 16
         Align = faTopOnly
-        DataField = 'preco'
-        DataSource = DsGeral
-        Text = ''
-      end
-      object RLDBText5: TRLDBText
-        Left = 104
-        Top = 0
-        Width = 36
-        Height = 16
-        Align = faTopOnly
-        DataField = 'nome'
+        DataField = 'valor_pagamento'
         DataSource = DsGeral
         Text = ''
       end
@@ -159,33 +159,26 @@ object FRelatorio: TFRelatorio
       Font.Name = 'Arial'
       Font.Style = [fsBold]
       ParentFont = False
-      object RLLabel3: TRLLabel
-        Left = 8
-        Top = 16
-        Width = 49
-        Height = 16
-        Caption = 'C'#243'digo'
-      end
       object RLLabel2: TRLLabel
-        Left = 104
+        Left = 0
         Top = 13
         Width = 41
         Height = 16
         Caption = 'Nome'
       end
       object RLLabel4: TRLLabel
-        Left = 324
-        Top = 13
-        Width = 78
-        Height = 16
-        Caption = 'Quantidade'
-      end
-      object RLLabel5: TRLLabel
         Left = 590
         Top = 13
         Width = 38
         Height = 16
         Caption = 'Valor'
+      end
+      object RLLabel5: TRLLabel
+        Left = 324
+        Top = 13
+        Width = 78
+        Height = 16
+        Caption = 'Quantidade'
       end
     end
   end

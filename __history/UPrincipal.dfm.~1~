@@ -53,7 +53,10 @@ object FPrincipal: TFPrincipal
     end
     object Relatrio1: TMenuItem
       Caption = 'Relat'#243'rio'
-      OnClick = Relatrio1Click
+      object Venda2: TMenuItem
+        Caption = 'Venda'
+        OnClick = Venda2Click
+      end
     end
   end
 end

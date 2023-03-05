@@ -21,16 +21,14 @@ type
     RLLabel1: TRLLabel;
     RLSystemInfo1: TRLSystemInfo;
     RLSystemInfo2: TRLSystemInfo;
-    RLSystemInfo3: TRLSystemInfo;
-    RLSystemInfo4: TRLSystemInfo;
-    RLDBText2: TRLDBText;
-    RLDBText6: TRLDBText;
-    RLDBText7: TRLDBText;
-    RLDBText5: TRLDBText;
-    RLLabel3: TRLLabel;
     RLLabel2: TRLLabel;
     RLLabel4: TRLLabel;
     RLLabel5: TRLLabel;
+    RLSystemInfo3: TRLSystemInfo;
+    RLSystemInfo4: TRLSystemInfo;
+    RLDBText1: TRLDBText;
+    RLDBText3: TRLDBText;
+    RLDBText4: TRLDBText;
     procedure RLReport1BeforePrint(Sender: TObject; var PrintIt: Boolean);
   private
     { Private declarations }

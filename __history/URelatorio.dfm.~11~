@@ -76,12 +76,22 @@ object FRelatorio: TFRelatorio
       Left = 38
       Top = 123
       Width = 718
-      Height = 22
+      Height = 134
       Borders.Sides = sdCustom
       Borders.DrawLeft = False
       Borders.DrawTop = False
       Borders.DrawRight = False
       Borders.DrawBottom = True
+      object RLDBText4: TRLDBText
+        Left = 140
+        Top = 0
+        Width = 101
+        Height = 16
+        Align = faTopOnly
+        DataField = 'valor_pagamento'
+        DataSource = DsGeral
+        Text = ''
+      end
       object RLDBText2: TRLDBText
         Left = 3
         Top = 0
@@ -112,20 +122,10 @@ object FRelatorio: TFRelatorio
         DataSource = DsGeral
         Text = ''
       end
-      object RLDBText5: TRLDBText
-        Left = 104
-        Top = 0
-        Width = 36
-        Height = 16
-        Align = faTopOnly
-        DataField = 'nome'
-        DataSource = DsGeral
-        Text = ''
-      end
     end
     object RLBand3: TRLBand
       Left = 38
-      Top = 145
+      Top = 257
       Width = 718
       Height = 96
       BandType = btFooter
@@ -159,33 +159,26 @@ object FRelatorio: TFRelatorio
       Font.Name = 'Arial'
       Font.Style = [fsBold]
       ParentFont = False
-      object RLLabel3: TRLLabel
-        Left = 8
-        Top = 16
-        Width = 49
-        Height = 16
-        Caption = 'C'#243'digo'
-      end
       object RLLabel2: TRLLabel
-        Left = 104
+        Left = 0
         Top = 13
         Width = 41
         Height = 16
         Caption = 'Nome'
       end
       object RLLabel4: TRLLabel
-        Left = 324
-        Top = 13
-        Width = 78
-        Height = 16
-        Caption = 'Quantidade'
-      end
-      object RLLabel5: TRLLabel
-        Left = 590
+        Left = 140
         Top = 13
         Width = 38
         Height = 16
         Caption = 'Valor'
+      end
+      object RLLabel5: TRLLabel
+        Left = 308
+        Top = 13
+        Width = 78
+        Height = 16
+        Caption = 'Data Venda'
       end
     end
   end

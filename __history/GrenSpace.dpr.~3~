@@ -9,8 +9,7 @@ uses
   UMovimentoEntrada in 'UMovimentoEntrada.pas' {FMovimentoEntrada},
   UMovimentoVenda in 'UMovimentoVenda.pas' {FMovimentoVenda},
   URelatorio in 'URelatorio.pas' {FRelatorio},
-  URelatorioFiltro in 'URelatorioFiltro.pas' {FRelatorioFiltro},
-  URelatorioVendaPagamento in 'URelatorioVendaPagamento.pas' {FRelatorioVendaPagamento};
+  URelatorioFiltro in 'URelatorioFiltro.pas' {FRelatorioFiltro};
 
 {$R *.res}
 
@@ -20,6 +19,5 @@ begin
   Application.CreateForm(TFPrincipal, FPrincipal);
   Application.CreateForm(Tdm, dm);
   Application.CreateForm(TFRelatorioFiltro, FRelatorioFiltro);
-  Application.CreateForm(TFRelatorioVendaPagamento, FRelatorioVendaPagamento);
   Application.Run;
 end.

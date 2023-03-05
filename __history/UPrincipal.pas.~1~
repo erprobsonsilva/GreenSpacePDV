@@ -8,7 +8,7 @@ uses
   UProduto, UEntidade, UMovimentoEntrada, UMovimentoVenda, FireDAC.Stan.Intf,
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
-  Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, UDM, URelatorioFiltro;
+  Data.DB, FireDAC.Comp.DataSet, FireDAC.Comp.Client, UDM, URelatorio;
 
 type
   TFPrincipal = class(TForm)
@@ -21,13 +21,14 @@ type
     Venda1: TMenuItem;
     PTarefa: TPanel;
     Relatrio1: TMenuItem;
+    Venda2: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure Produto1Click(Sender: TObject);
     procedure Entidade1Click(Sender: TObject);
     procedure Compra1Click(Sender: TObject);
     procedure Venda1Click(Sender: TObject);
-    procedure Relatrio1Click(Sender: TObject);
+    procedure Venda2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -36,7 +37,7 @@ type
     TCadEntidade : TFEntidade;
     TMovimentoEntrada : TFMovimentoEntrada;
     TMovimentoVenda : TFMovimentoVenda;
-    TRelatorioFiltro : TFRelatorioFiltro;
+    TRelatorio : TFRelatorio;
   end;
 
 var
@@ -66,8 +67,8 @@ begin
   TMovimentoEntrada.parent := PTarefa;
   TMovimentoVenda := TFMovimentoVenda.create(nil);
   TMovimentoVenda.parent := PTarefa;
-  TRelatorioFiltro := TFRelatorioFiltro.Create(nil);
-  TRelatorioFiltro.parent := PTarefa;
+  TRelatorio := TFRelatorio.Create(nil);
+  TRelatorio.parent := PTarefa;
 end;
 
 procedure TFPrincipal.FormDestroy(Sender: TObject);
@@ -76,17 +77,12 @@ begin
   FreeAndNil(TCadEntidade);
   FreeAndNil(TMovimentoEntrada);
   FreeAndNil(TMovimentoVenda);
-  FreeAndNil(TRelatorioFiltro);
+  FreeAndNil(TRelatorio);
 end;
 
 procedure TFPrincipal.Produto1Click(Sender: TObject);
 begin
   TCadProduto.show;
-end;
-
-procedure TFPrincipal.Relatrio1Click(Sender: TObject);
-begin
-  TRelatorioFiltro.show;
 end;
 
 procedure TFPrincipal.Venda1Click(Sender: TObject);
@@ -122,6 +118,11 @@ begin
   end
   else
     TMovimentoVenda.Show;
+end;
+
+procedure TFPrincipal.Venda2Click(Sender: TObject);
+begin
+  TRelatorio.RLReport1.Preview();
 end;
 
 end.

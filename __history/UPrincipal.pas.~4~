@@ -21,13 +21,14 @@ type
     Venda1: TMenuItem;
     PTarefa: TPanel;
     Relatrio1: TMenuItem;
+    Venda2: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure Produto1Click(Sender: TObject);
     procedure Entidade1Click(Sender: TObject);
     procedure Compra1Click(Sender: TObject);
     procedure Venda1Click(Sender: TObject);
-    procedure Relatrio1Click(Sender: TObject);
+    procedure Venda2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -84,11 +85,6 @@ begin
   TCadProduto.show;
 end;
 
-procedure TFPrincipal.Relatrio1Click(Sender: TObject);
-begin
-  TRelatorioFiltro.show;
-end;
-
 procedure TFPrincipal.Venda1Click(Sender: TObject);
 var
   xFbMovimentoDia, xFbInsertMovimentoDia : TFDQuery;
@@ -122,6 +118,11 @@ begin
   end
   else
     TMovimentoVenda.Show;
+end;
+
+procedure TFPrincipal.Venda2Click(Sender: TObject);
+begin
+  TRelatorioFiltro.show;
 end;
 
 end.

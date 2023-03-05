@@ -1,9 +1,9 @@
-object FRelatorio: TFRelatorio
+object FRelatorioVendaPagamento: TFRelatorioVendaPagamento
   Left = 0
   Top = 0
-  Caption = 'FRelatorio'
-  ClientHeight = 748
-  ClientWidth = 967
+  Caption = 'Relatorio Venda Pagamento'
+  ClientHeight = 705
+  ClientWidth = 901
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,7 +15,7 @@ object FRelatorio: TFRelatorio
   TextHeight = 13
   object RLReport1: TRLReport
     Left = 0
-    Top = 0
+    Top = 2
     Width = 794
     Height = 1123
     DataSource = DsGeral
@@ -25,7 +25,6 @@ object FRelatorio: TFRelatorio
     Font.Name = 'Arial'
     Font.Style = []
     Title = 'Vendas do dia.'
-    BeforePrint = RLReport1BeforePrint
     object RLBand1: TRLBand
       Left = 38
       Top = 38
@@ -82,7 +81,7 @@ object FRelatorio: TFRelatorio
       Borders.DrawTop = False
       Borders.DrawRight = False
       Borders.DrawBottom = True
-      object RLDBText2: TRLDBText
+      object RLDBText1: TRLDBText
         Left = 3
         Top = 0
         Width = 75
@@ -92,7 +91,17 @@ object FRelatorio: TFRelatorio
         DataSource = DsGeral
         Text = ''
       end
-      object RLDBText6: TRLDBText
+      object RLDBText2: TRLDBText
+        Left = 104
+        Top = 0
+        Width = 36
+        Height = 16
+        Align = faTopOnly
+        DataField = 'nome'
+        DataSource = DsGeral
+        Text = ''
+      end
+      object RLDBText3: TRLDBText
         Left = 324
         Top = 0
         Width = 67
@@ -102,23 +111,13 @@ object FRelatorio: TFRelatorio
         DataSource = DsGeral
         Text = ''
       end
-      object RLDBText7: TRLDBText
-        Left = 598
+      object RLDBText4: TRLDBText
+        Left = 590
         Top = 0
         Width = 36
         Height = 16
         Align = faTopOnly
         DataField = 'preco'
-        DataSource = DsGeral
-        Text = ''
-      end
-      object RLDBText5: TRLDBText
-        Left = 104
-        Top = 0
-        Width = 36
-        Height = 16
-        Align = faTopOnly
-        DataField = 'nome'
         DataSource = DsGeral
         Text = ''
       end
@@ -159,14 +158,14 @@ object FRelatorio: TFRelatorio
       Font.Name = 'Arial'
       Font.Style = [fsBold]
       ParentFont = False
-      object RLLabel3: TRLLabel
-        Left = 8
-        Top = 16
+      object RLLabel2: TRLLabel
+        Left = 0
+        Top = 13
         Width = 49
         Height = 16
         Caption = 'C'#243'digo'
       end
-      object RLLabel2: TRLLabel
+      object RLLabel3: TRLLabel
         Left = 104
         Top = 13
         Width = 41
@@ -174,20 +173,25 @@ object FRelatorio: TFRelatorio
         Caption = 'Nome'
       end
       object RLLabel4: TRLLabel
-        Left = 324
-        Top = 13
-        Width = 78
-        Height = 16
-        Caption = 'Quantidade'
-      end
-      object RLLabel5: TRLLabel
         Left = 590
         Top = 13
         Width = 38
         Height = 16
         Caption = 'Valor'
       end
+      object RLLabel5: TRLLabel
+        Left = 324
+        Top = 13
+        Width = 78
+        Height = 16
+        Caption = 'Quantidade'
+      end
     end
+  end
+  object DsGeral: TDataSource
+    DataSet = FdGeral
+    Left = 824
+    Top = 120
   end
   object FdGeral: TFDQuery
     Connection = dm.ConnectionPostgres
@@ -219,10 +223,5 @@ object FRelatorio: TFRelatorio
         Name = 'DATA_MOVIMENTO_FIM'
         ParamType = ptInput
       end>
-  end
-  object DsGeral: TDataSource
-    DataSet = FdGeral
-    Left = 824
-    Top = 120
   end
 end

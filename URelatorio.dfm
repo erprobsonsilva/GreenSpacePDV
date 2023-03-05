@@ -201,6 +201,9 @@ object FRelatorio: TFRelatorio
       ' where m.cod_movimento = mi.cod_movimento'
       '   and mi.cod_produto = p.cod_produto'
       '   and p.cod_produto = coalesce(:cod_produto,p.cod_produto)'
+      '   and m.tipo_movimento = '#39'S'#39
+      '   and coalesce(m.flg_cancelado,'#39'N'#39') = '#39'N'#39
+      '   and coalesce(mi.flg_cancelado,'#39'N'#39') = '#39'N'#39
       '   and data_movimento >= :data_movimento_ini'
       '   and data_movimento <= :data_movimento_fim'
       ' group by p.cod_produto, p.nome')

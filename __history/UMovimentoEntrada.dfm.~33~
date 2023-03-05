@@ -597,6 +597,43 @@ object FMovimentoEntrada: TFMovimentoEntrada
     Left = 748
     Top = 320
   end
+  object FdMovimentoPagamento: TFDTable
+    IndexFieldNames = 'cod_pagamento;cod_movimento'
+    Connection = dm.ConnectionPostgres
+    TableName = 'movimento_pagamento'
+    Left = 916
+    Top = 248
+    object FdMovimentoPagamentocod_pagamento: TFMTBCDField
+      DisplayLabel = 'Seq. Pagamento'
+      FieldName = 'cod_pagamento'
+      Origin = 'cod_pagamento'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Precision = 15
+      Size = 0
+    end
+    object FdMovimentoPagamentocod_movimento: TFMTBCDField
+      FieldName = 'cod_movimento'
+      Origin = 'cod_movimento'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Visible = False
+      Precision = 15
+      Size = 0
+    end
+    object FdMovimentoPagamentotp_pagamento: TFMTBCDField
+      DisplayLabel = 'Tipo'
+      FieldName = 'tp_pagamento'
+      Origin = 'tp_pagamento'
+      Precision = 15
+      Size = 0
+    end
+    object FdMovimentoPagamentovalor: TBCDField
+      DisplayLabel = 'Valor'
+      FieldName = 'valor'
+      Origin = 'valor'
+      Precision = 15
+      Size = 2
+    end
+  end
   object FdQMovimentoItem: TFDQuery
     Connection = dm.ConnectionPostgres
     SQL.Strings = (
@@ -709,8 +746,7 @@ object FMovimentoEntrada: TFMovimentoEntrada
       '       mp.valor valor,'
       '       mp.flg_troco,'
       '       mp.flg_cancelado,'
-      '       mp.COD_PAGAMENTO,'
-      '       m.cod_movimento'
+      '       mp.COD_PAGAMENTO'
       '  from movimento m,'
       '       movimento_pagamento mp'
       ' where m.cod_movimento = mp.cod_movimento'
@@ -753,15 +789,6 @@ object FMovimentoEntrada: TFMovimentoEntrada
     object FdQMovimentoPagamentocod_pagamento: TFMTBCDField
       FieldName = 'cod_pagamento'
       Origin = 'cod_pagamento'
-      Visible = False
-      Precision = 15
-      Size = 0
-    end
-    object FdQMovimentoPagamentocod_movimento: TFMTBCDField
-      AutoGenerateValue = arDefault
-      FieldName = 'cod_movimento'
-      Origin = 'cod_movimento'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Visible = False
       Precision = 15
       Size = 0

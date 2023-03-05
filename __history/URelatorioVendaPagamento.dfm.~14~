@@ -1,9 +1,9 @@
-object FRelatorio: TFRelatorio
+object FRelatorioVendaPagamento: TFRelatorioVendaPagamento
   Left = 0
   Top = 0
-  Caption = 'FRelatorio'
-  ClientHeight = 748
-  ClientWidth = 967
+  Caption = 'Relatorio Venda Pagamento'
+  ClientHeight = 705
+  ClientWidth = 901
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,7 +15,7 @@ object FRelatorio: TFRelatorio
   TextHeight = 13
   object RLReport1: TRLReport
     Left = 0
-    Top = 0
+    Top = 2
     Width = 794
     Height = 1123
     DataSource = DsGeral
@@ -82,43 +82,33 @@ object FRelatorio: TFRelatorio
       Borders.DrawTop = False
       Borders.DrawRight = False
       Borders.DrawBottom = True
+      object RLDBText3: TRLDBText
+        Left = 308
+        Top = 0
+        Width = 98
+        Height = 16
+        Align = faTopOnly
+        DataField = 'data_movimento'
+        DataSource = DsGeral
+        Text = ''
+      end
       object RLDBText1: TRLDBText
         Left = 3
         Top = 0
-        Width = 75
+        Width = 86
         Height = 16
         Align = faTopOnly
-        DataField = 'cod_produto'
-        DataSource = DsGeral
-        Text = ''
-      end
-      object RLDBText2: TRLDBText
-        Left = 104
-        Top = 0
-        Width = 36
-        Height = 16
-        Align = faTopOnly
-        DataField = 'nome'
-        DataSource = DsGeral
-        Text = ''
-      end
-      object RLDBText3: TRLDBText
-        Left = 324
-        Top = 0
-        Width = 67
-        Height = 16
-        Align = faTopOnly
-        DataField = 'quantidade'
+        DataField = 'tp_pagamento'
         DataSource = DsGeral
         Text = ''
       end
       object RLDBText4: TRLDBText
-        Left = 590
+        Left = 140
         Top = 0
-        Width = 36
+        Width = 101
         Height = 16
         Align = faTopOnly
-        DataField = 'preco'
+        DataField = 'valor_pagamento'
         DataSource = DsGeral
         Text = ''
       end
@@ -162,53 +152,56 @@ object FRelatorio: TFRelatorio
       object RLLabel2: TRLLabel
         Left = 0
         Top = 13
-        Width = 49
-        Height = 16
-        Caption = 'C'#243'digo'
-      end
-      object RLLabel3: TRLLabel
-        Left = 104
-        Top = 13
         Width = 41
         Height = 16
         Caption = 'Nome'
       end
-      object RLLabel4: TRLLabel
-        Left = 590
+      object RLLabel3: TRLLabel
+        Left = 140
         Top = 13
         Width = 38
         Height = 16
         Caption = 'Valor'
       end
       object RLLabel5: TRLLabel
-        Left = 324
+        Left = 308
         Top = 13
         Width = 78
         Height = 16
-        Caption = 'Quantidade'
+        Caption = 'Data Venda'
       end
     end
+  end
+  object DsGeral: TDataSource
+    DataSet = FdGeral
+    Left = 824
+    Top = 120
   end
   object FdGeral: TFDQuery
     Connection = dm.ConnectionPostgres
     SQL.Strings = (
-      
-        'select p.cod_produto, p.nome, sum(mi.quantidade) quantidade, sum' +
-        '(mi.preco) preco'
+      'select '
+      #9'CASE'
+      #9'WHEN mp.tp_pagamento = 0 THEN '#39'DINHEIRO'#39
+      #9'WHEN mp.tp_pagamento = 1 THEN '#39'PIX'#39
+      #9'WHEN mp.tp_pagamento = 2 THEN '#39'CART'#195'O CREDITO'#39
+      #9'WHEN mp.tp_pagamento = 3 THEN '#39'CART'#195'O D'#201'BITO'#39
+      #9'END tp_pagamento,'
+      '       m.data_movimento, '
+      '       sum(mp.valor) valor_pagamento'
       '  from movimento m,'
-      '       movimento_item mi,'
-      '       produto p'
-      ' where m.cod_movimento = mi.cod_movimento'
-      '   and mi.cod_produto = p.cod_produto'
-      '   and p.cod_produto = coalesce(:cod_produto,p.cod_produto)'
+      '       movimento_pagamento mp'
+      ' where m.cod_movimento = mp.cod_movimento'
+      '   and coalesce(mp.flg_cancelado,'#39'N'#39') = '#39'N'#39
+      '   and mp.tp_pagamento = coalesce(:tp_pagamento,mp.tp_pagamento)'
       '   and data_movimento >= :data_movimento_ini'
       '   and data_movimento <= :data_movimento_fim'
-      ' group by p.cod_produto, p.nome')
+      ' group by mp.tp_pagamento, m.data_movimento')
     Left = 824
     Top = 72
     ParamData = <
       item
-        Name = 'COD_PRODUTO'
+        Name = 'TP_PAGAMENTO'
         ParamType = ptInput
       end
       item
@@ -219,16 +212,5 @@ object FRelatorio: TFRelatorio
         Name = 'DATA_MOVIMENTO_FIM'
         ParamType = ptInput
       end>
-  end
-  object DsGeral: TDataSource
-    DataSet = FdGeral
-    Left = 824
-    Top = 120
-  end
-  object ClientDataSet1: TClientDataSet
-    Aggregates = <>
-    Params = <>
-    Left = 816
-    Top = 408
   end
 end

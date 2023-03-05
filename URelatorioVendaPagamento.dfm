@@ -193,6 +193,8 @@ object FRelatorioVendaPagamento: TFRelatorioVendaPagamento
       '       movimento_pagamento mp'
       ' where m.cod_movimento = mp.cod_movimento'
       '   and coalesce(mp.flg_cancelado,'#39'N'#39') = '#39'N'#39
+      '   and m.tipo_movimento = '#39'S'#39
+      '   and coalesce(m.flg_cancelado,'#39'N'#39') = '#39'N'#39
       '   and mp.tp_pagamento = coalesce(:tp_pagamento,mp.tp_pagamento)'
       '   and data_movimento >= :data_movimento_ini'
       '   and data_movimento <= :data_movimento_fim'

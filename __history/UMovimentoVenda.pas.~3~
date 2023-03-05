@@ -129,6 +129,10 @@ begin
     FdQMovimentoItem.ParamByName('cod_movimento').AsInteger := FSequenciaMovimento;
     FdQMovimentoItem.Open;
 
+    FdMovimentoPagamento.Filter := ' cod_movimento = ' + IntToStr(FSequenciaMovimento);
+    FdMovimentoPagamento.Filtered := True;
+    FdMovimentoPagamento.Active := True;
+
   finally
     xFbMovimento.Close;
     FreeAndNil(xFbMovimento);

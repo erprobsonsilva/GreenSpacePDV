@@ -4,8 +4,8 @@ object FRelatorioFiltro: TFRelatorioFiltro
   Align = alClient
   BorderIcons = []
   Caption = 'Filtro Relat'#243'rios'
-  ClientHeight = 445
-  ClientWidth = 864
+  ClientHeight = 483
+  ClientWidth = 889
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,12 +19,19 @@ object FRelatorioFiltro: TFRelatorioFiltro
   object PageControl1: TPageControl
     Left = 0
     Top = 0
-    Width = 864
-    Height = 445
-    ActivePage = TsResumoVenda
+    Width = 889
+    Height = 483
+    ActivePage = TsProduto
     Align = alClient
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -20
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
     TabOrder = 0
-    ExplicitHeight = 563
+    ExplicitWidth = 864
+    ExplicitHeight = 445
     object TsProduto: TTabSheet
       Caption = 'Produto'
       object Label1: TLabel

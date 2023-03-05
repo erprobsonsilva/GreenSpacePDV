@@ -52,6 +52,11 @@ type
     DsMovimentoItem: TDataSource;
     DbGridPagamento: TDBGrid;
     DsMovimentoPagamento: TDataSource;
+    FdMovimentoPagamento: TFDTable;
+    FdMovimentoPagamentocod_pagamento: TFMTBCDField;
+    FdMovimentoPagamentocod_movimento: TFMTBCDField;
+    FdMovimentoPagamentotp_pagamento: TFMTBCDField;
+    FdMovimentoPagamentovalor: TBCDField;
     BtFinalizar: TButton;
     CbTipoPagamento: TComboBox;
     Label14: TLabel;

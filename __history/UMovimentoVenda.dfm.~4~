@@ -3,6 +3,7 @@ inherited FMovimentoVenda: TFMovimentoVenda
   PixelsPerInch = 96
   TextHeight = 13
   inherited Tsgeral: TPageControl
+    ActivePage = TsPagamento
     inherited TsMovimento: TTabSheet
       inherited Panel1: TPanel
         inherited Label10: TLabel
@@ -161,11 +162,18 @@ inherited FMovimentoVenda: TFMovimentoVenda
         Font.Height = -20
         ExplicitHeight = 32
       end
+      inherited DBGrid2: TDBGrid
+        Height = 329
+      end
       inherited BtFinalizar: TButton
-        Top = 633
-        ExplicitTop = 633
+        Top = 559
+        ExplicitTop = 559
       end
     end
+  end
+  inherited FdMovimentoItem: TFDTable
+    Left = 492
+    Top = 216
   end
   inherited DsMovimentoItem: TDataSource
     Left = 492
@@ -175,17 +183,12 @@ inherited FMovimentoVenda: TFMovimentoVenda
     Left = 612
     Top = 264
   end
+  inherited FdMovimentoPagamento: TFDTable
+    Left = 612
+    Top = 208
+  end
   inherited FdQMovimentoItem: TFDQuery
     Left = 728
     Top = 208
-  end
-  inherited FdQMovimentoPagamento: TFDQuery
-    ParamData = <
-      item
-        Name = 'COD_MOVIMENTO'
-        DataType = ftInteger
-        ParamType = ptInput
-        Value = 1
-      end>
   end
 end

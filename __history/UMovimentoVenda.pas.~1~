@@ -125,9 +125,17 @@ begin
     xFbMovimento.ParamByName('data_movimento').AsDateTime := Now;
     xFbMovimento.ExecSQL;
 
+    FdMovimentoItem.Filter := ' cod_movimento = ' + IntToStr(FSequenciaMovimento);
+    FdMovimentoItem.Filtered := True;
+    FdMovimentoItem.Active := True;
+
     FdQMovimentoItem.Close;
     FdQMovimentoItem.ParamByName('cod_movimento').AsInteger := FSequenciaMovimento;
     FdQMovimentoItem.Open;
+
+    FdMovimentoPagamento.Filter := ' cod_movimento = ' + IntToStr(FSequenciaMovimento);
+    FdMovimentoPagamento.Filtered := True;
+    FdMovimentoPagamento.Active := True;
 
   finally
     xFbMovimento.Close;

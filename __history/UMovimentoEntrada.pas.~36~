@@ -52,6 +52,11 @@ type
     DsMovimentoItem: TDataSource;
     DbGridPagamento: TDBGrid;
     DsMovimentoPagamento: TDataSource;
+    FdMovimentoPagamento: TFDTable;
+    FdMovimentoPagamentocod_pagamento: TFMTBCDField;
+    FdMovimentoPagamentocod_movimento: TFMTBCDField;
+    FdMovimentoPagamentotp_pagamento: TFMTBCDField;
+    FdMovimentoPagamentovalor: TBCDField;
     BtFinalizar: TButton;
     CbTipoPagamento: TComboBox;
     Label14: TLabel;
@@ -73,7 +78,6 @@ type
     FdQMovimentoPagamentovalor: TBCDField;
     FdQMovimentoPagamentotp_pagamento: TFMTBCDField;
     FdQMovimentoPagamentocod_pagamento: TFMTBCDField;
-    FdQMovimentoPagamentocod_movimento: TFMTBCDField;
     procedure EdCodigoExit(Sender: TObject);
     procedure BtIniciarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -162,6 +166,10 @@ begin
     FdQMovimentoPagamento.Close;
     FdQMovimentoPagamento.ParamByName('cod_movimento').AsInteger := FSequenciaMovimento;
     FdQMovimentoPagamento.Open;
+
+    FdMovimentoPagamento.Filter := ' cod_movimento = ' + IntToStr(FSequenciaMovimento);
+    FdMovimentoPagamento.Filtered := True;
+    FdMovimentoPagamento.Active := True;
 
   finally
     xFbMovimento.Close;
@@ -263,13 +271,8 @@ if MessageDlg('Deseja relamente excluir o pagamento?', mtConfirmation, [mbYes, m
     xFbMovimentoPagamento.ParamByName('cod_movimento').AsInteger := DbGridPagamento.DataSource.DataSet.FieldByName('COD_MOVIMENTO').AsInteger;
     xFbMovimentoPagamento.ParamByName('FLG_CANCELADO').AsString := 'S';
     xFbMovimentoPagamento.ExecSQL;
+
     CalculaTotalCompra;
-
-    FdQMovimentoPagamento.Close;
-    FdQMovimentoPagamento.ParamByName('cod_movimento').AsInteger := FSequenciaMovimento;
-    FdQMovimentoPagamento.Open;
-
-    CbTipoPagamento.SetFocus;
   end;
 end;
 
@@ -279,7 +282,6 @@ begin
   if key = 13 then // Tecla Enter
   begin
     EdValorPagamento.SetFocus;
-    EdValorPagamento.SelectAll;
   end;
 end;
 
@@ -628,6 +630,7 @@ begin
     FdQMovimentoPagamento.Close;
     FdQMovimentoPagamento.ParamByName('cod_movimento').AsInteger := FSequenciaMovimento;
     FdQMovimentoPagamento.Open;
+    FdMovimentoPagamento.Refresh;
 
     if StrToFloat(EdValorTroco.Text) <> 0 then
       InserirTroco(xFdQuerySeqMovimentoPagamento.FieldByName('cod_pagamento').AsInteger);
@@ -718,6 +721,7 @@ begin
     FdQMovimentoPagamento.ParamByName('cod_movimento').AsInteger := FSequenciaMovimento;
     FdQMovimentoPagamento.Open;
 
+    FdMovimentoPagamento.Refresh;
     EdValorSaldo.Text := FormatFloat('#0.00', StrToFloat(EdValorSaldo.Text) - StrToFloat(EdValorPagamento.Text));
   finally
     xFdQuerySeqMovimentoPagamento.Close;

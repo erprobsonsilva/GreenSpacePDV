@@ -71,7 +71,6 @@ type
     FdQMovimentoPagamentoflg_troco: TWideStringField;
     FdQMovimentoPagamentoflg_cancelado: TWideStringField;
     FdQMovimentoPagamentovalor: TBCDField;
-    FdQMovimentoPagamentotp_pagamento: TFMTBCDField;
     FdQMovimentoPagamentocod_pagamento: TFMTBCDField;
     FdQMovimentoPagamentocod_movimento: TFMTBCDField;
     EdCpfCnpj: TEdit;
@@ -88,6 +87,11 @@ type
     Panel2: TPanel;
     Label21: TLabel;
     Label22: TLabel;
+    Panel3: TPanel;
+    Label23: TLabel;
+    Label24: TLabel;
+    Panel4: TPanel;
+    Label25: TLabel;
     procedure EdCodigoExit(Sender: TObject);
     procedure BtIniciarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -396,7 +400,7 @@ end;
 procedure TFMovimentoEntrada.CbParceriaKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-if key = 13 then // Tecla Enter
+  if key = 13 then // Tecla Enter
   begin
     BtCompra.SetFocus;
   end;
@@ -671,7 +675,7 @@ end;
 procedure TFMovimentoEntrada.EdCodProdutoKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-  if key = 80 then  //Tecla P
+  if key = 112 then  //Tecla F1
   begin
     PesquisaProduto;
   end;

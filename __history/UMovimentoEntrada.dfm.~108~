@@ -22,7 +22,7 @@ object FMovimentoEntrada: TFMovimentoEntrada
     Top = 0
     Width = 1871
     Height = 709
-    ActivePage = TsItem
+    ActivePage = TsPagamento
     Align = alClient
     TabOrder = 0
     OnChange = TsgeralChange
@@ -205,7 +205,7 @@ object FMovimentoEntrada: TFMovimentoEntrada
       ImageIndex = 1
       object Label1: TLabel
         Left = 40
-        Top = 77
+        Top = 73
         Width = 76
         Height = 24
         Caption = 'Produto:'
@@ -257,7 +257,7 @@ object FMovimentoEntrada: TFMovimentoEntrada
       end
       object LbFornecedor: TLabel
         Left = 40
-        Top = 40
+        Top = 35
         Width = 112
         Height = 24
         Caption = 'Fornecedor: '
@@ -348,7 +348,7 @@ object FMovimentoEntrada: TFMovimentoEntrada
       end
       object EdCodProduto: TEdit
         Left = 152
-        Top = 69
+        Top = 70
         Width = 163
         Height = 32
         Font.Charset = DEFAULT_CHARSET
@@ -561,7 +561,7 @@ object FMovimentoEntrada: TFMovimentoEntrada
         Left = 0
         Top = 0
         Width = 1863
-        Height = 38
+        Height = 32
         Align = alTop
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -570,7 +570,6 @@ object FMovimentoEntrada: TFMovimentoEntrada
         Font.Style = []
         ParentFont = False
         TabOrder = 14
-        ExplicitTop = -1
         object Label23: TLabel
           Left = 14
           Top = 1
@@ -583,7 +582,7 @@ object FMovimentoEntrada: TFMovimentoEntrada
           Top = 1
           Width = 209
           Height = 24
-          Caption = '[F2] - Pesquisa Produto'
+          Caption = '[F1] - Pesquisa Produto'
         end
       end
     end
@@ -591,8 +590,8 @@ object FMovimentoEntrada: TFMovimentoEntrada
       Caption = 'Pagamento'
       ImageIndex = 2
       object Label3: TLabel
-        Left = 7
-        Top = 9
+        Left = 6
+        Top = 47
         Width = 108
         Height = 24
         Caption = 'Pagamento:'
@@ -604,8 +603,8 @@ object FMovimentoEntrada: TFMovimentoEntrada
         ParentFont = False
       end
       object Label4: TLabel
-        Left = 696
-        Top = 9
+        Left = 699
+        Top = 47
         Width = 128
         Height = 24
         Caption = 'Valor Compra:'
@@ -617,8 +616,8 @@ object FMovimentoEntrada: TFMovimentoEntrada
         ParentFont = False
       end
       object Label5: TLabel
-        Left = 715
-        Top = 111
+        Left = 253
+        Top = 87
         Width = 109
         Height = 24
         Caption = 'Valor Troco:'
@@ -630,8 +629,8 @@ object FMovimentoEntrada: TFMovimentoEntrada
         ParentFont = False
       end
       object Label6: TLabel
-        Left = 664
-        Top = 161
+        Left = 504
+        Top = 87
         Width = 160
         Height = 24
         Caption = 'Valor Pagamento:'
@@ -643,8 +642,8 @@ object FMovimentoEntrada: TFMovimentoEntrada
         ParentFont = False
       end
       object Label8: TLabel
-        Left = 716
-        Top = 56
+        Left = 9
+        Top = 85
         Width = 108
         Height = 24
         Caption = 'Valor Saldo:'
@@ -657,7 +656,7 @@ object FMovimentoEntrada: TFMovimentoEntrada
       end
       object Label20: TLabel
         Left = 419
-        Top = 6
+        Top = 47
         Width = 147
         Height = 24
         Caption = 'Total Sem Desc:'
@@ -670,7 +669,7 @@ object FMovimentoEntrada: TFMovimentoEntrada
       end
       object EdTotalCompra: TEdit
         Left = 830
-        Top = 6
+        Top = 44
         Width = 121
         Height = 32
         Enabled = False
@@ -683,10 +682,10 @@ object FMovimentoEntrada: TFMovimentoEntrada
         TabOrder = 3
       end
       object EdValorTroco: TEdit
-        Left = 830
-        Top = 101
+        Left = 368
+        Top = 82
         Width = 121
-        Height = 41
+        Height = 34
         Enabled = False
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -697,8 +696,8 @@ object FMovimentoEntrada: TFMovimentoEntrada
         TabOrder = 4
       end
       object EdValorPagamento: TEdit
-        Left = 830
-        Top = 158
+        Left = 670
+        Top = 84
         Width = 121
         Height = 32
         Font.Charset = DEFAULT_CHARSET
@@ -713,8 +712,8 @@ object FMovimentoEntrada: TFMovimentoEntrada
         OnKeyDown = EdValorPagamentoKeyDown
       end
       object EdValorSaldo: TEdit
-        Left = 830
-        Top = 53
+        Left = 123
+        Top = 84
         Width = 121
         Height = 32
         Enabled = False
@@ -727,10 +726,10 @@ object FMovimentoEntrada: TFMovimentoEntrada
         TabOrder = 5
       end
       object DbGridPagamento: TDBGrid
-        Left = 7
-        Top = 216
-        Width = 944
-        Height = 281
+        Left = 3
+        Top = 122
+        Width = 948
+        Height = 319
         DataSource = DsMovimentoPagamento
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -750,7 +749,7 @@ object FMovimentoEntrada: TFMovimentoEntrada
       end
       object BtFinalizar: TButton
         Left = 723
-        Top = 503
+        Top = 447
         Width = 228
         Height = 45
         Caption = 'Finalizar'
@@ -764,8 +763,8 @@ object FMovimentoEntrada: TFMovimentoEntrada
         OnClick = BtFinalizarClick
       end
       object CbTipoPagamento: TComboBox
-        Left = 116
-        Top = 6
+        Left = 115
+        Top = 44
         Width = 297
         Height = 32
         CharCase = ecUpperCase
@@ -787,7 +786,7 @@ object FMovimentoEntrada: TFMovimentoEntrada
       end
       object EdTotalSemDesc: TEdit
         Left = 572
-        Top = 6
+        Top = 44
         Width = 121
         Height = 32
         Enabled = False
@@ -798,6 +797,27 @@ object FMovimentoEntrada: TFMovimentoEntrada
         Font.Style = []
         ParentFont = False
         TabOrder = 7
+      end
+      object Panel4: TPanel
+        Left = 0
+        Top = 0
+        Width = 1863
+        Height = 38
+        Align = alTop
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -20
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 8
+        object Label25: TLabel
+          Left = 3
+          Top = 4
+          Width = 433
+          Height = 24
+          Caption = '[Enter] : Proximo Campo e Adiciona Finalizadora'
+        end
       end
     end
   end
@@ -913,12 +933,12 @@ object FMovimentoEntrada: TFMovimentoEntrada
   object FdQMovimentoPagamento: TFDQuery
     Connection = dm.ConnectionPostgres
     SQL.Strings = (
-      'select CASE'
+      'select cast ((CASE'
       '       WHEN mp.tp_pagamento = 0 THEN '#39'DINHEIRO'#39
       '       WHEN mp.tp_pagamento = 1 THEN '#39'PIX'#39
       '       WHEN mp.tp_pagamento = 2 THEN '#39'CARTAO CREDITO'#39
       '       WHEN mp.tp_pagamento = 3 THEN '#39'CARTAO DEBITO'#39
-      '       END tp_pagamentos,'
+      '       END) as Character Varying(100)) tp_pagamentos,'
       '       tp_pagamento,'
       '       mp.valor valor,'
       '       mp.flg_troco,'
@@ -979,6 +999,13 @@ object FMovimentoEntrada: TFMovimentoEntrada
       Visible = False
       Precision = 15
       Size = 0
+    end
+    object FdQMovimentoPagamentotp_pagamentos: TWideMemoField
+      AutoGenerateValue = arDefault
+      FieldName = 'tp_pagamentos'
+      Origin = 'tp_pagamentos'
+      ReadOnly = True
+      BlobType = ftWideMemo
     end
   end
 end

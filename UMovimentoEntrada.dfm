@@ -933,13 +933,12 @@ object FMovimentoEntrada: TFMovimentoEntrada
   object FdQMovimentoPagamento: TFDQuery
     Connection = dm.ConnectionPostgres
     SQL.Strings = (
-      'select CASE'
+      'select cast ((CASE'
       '       WHEN mp.tp_pagamento = 0 THEN '#39'DINHEIRO'#39
       '       WHEN mp.tp_pagamento = 1 THEN '#39'PIX'#39
       '       WHEN mp.tp_pagamento = 2 THEN '#39'CARTAO CREDITO'#39
       '       WHEN mp.tp_pagamento = 3 THEN '#39'CARTAO DEBITO'#39
-      '       END tp_pagamentos,'
-      '       tp_pagamento,'
+      '       END) as Character Varying(100)) tp_pagamento,'
       '       mp.valor valor,'
       '       mp.flg_troco,'
       '       mp.flg_cancelado,'
@@ -958,11 +957,13 @@ object FMovimentoEntrada: TFMovimentoEntrada
         ParamType = ptInput
         Value = 1
       end>
-    object FdQMovimentoPagamentotp_pagamento: TFMTBCDField
+    object FdQMovimentoPagamentotp_pagamento: TWideStringField
+      AutoGenerateValue = arDefault
+      DisplayWidth = 20
       FieldName = 'tp_pagamento'
       Origin = 'tp_pagamento'
-      Precision = 15
-      Size = 0
+      ReadOnly = True
+      Size = 100
     end
     object FdQMovimentoPagamentovalor: TBCDField
       FieldName = 'valor'

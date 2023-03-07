@@ -71,7 +71,6 @@ type
     FdQMovimentoPagamentoflg_troco: TWideStringField;
     FdQMovimentoPagamentoflg_cancelado: TWideStringField;
     FdQMovimentoPagamentovalor: TBCDField;
-    FdQMovimentoPagamentotp_pagamento: TFMTBCDField;
     FdQMovimentoPagamentocod_pagamento: TFMTBCDField;
     FdQMovimentoPagamentocod_movimento: TFMTBCDField;
     EdCpfCnpj: TEdit;
@@ -93,6 +92,7 @@ type
     Label24: TLabel;
     Panel4: TPanel;
     Label25: TLabel;
+    FdQMovimentoPagamentotp_pagamento: TWideStringField;
     procedure EdCodigoExit(Sender: TObject);
     procedure BtIniciarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);

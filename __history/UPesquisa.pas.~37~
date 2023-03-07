@@ -1,0 +1,97 @@
+unit UPesquisa;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, Data.DB,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, UDM, Vcl.ExtCtrls, Vcl.Grids,
+  Vcl.DBGrids, Vcl.StdCtrls;
+
+type
+  TFPesquisa = class(TForm)
+    FDQPesquisa: TFDQuery;
+    Panel1: TPanel;
+    Panel2: TPanel;
+    DbGridItem: TDBGrid;
+    Panel3: TPanel;
+    BtConfirmar: TButton;
+    Button3: TButton;
+    BtPesquisa: TButton;
+    EdNome: TEdit;
+    Label1: TLabel;
+    Label2: TLabel;
+    DsPEsquisa: TDataSource;
+    Panel4: TPanel;
+    Label23: TLabel;
+    Label24: TLabel;
+    procedure BtPesquisaClick(Sender: TObject);
+    procedure BtConfirmarClick(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+    procedure EdNomeKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure DbGridItemKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    Procedure PesquisaProduto(aNome:String);
+  end;
+
+var
+  FPesquisa: TFPesquisa;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFPesquisa.BtPesquisaClick(Sender: TObject);
+begin
+  FDQPesquisa.Close;
+  FDQPesquisa.SQL.Clear;
+  FDQPesquisa.SQL.Add(' select * ');
+  FDQPesquisa.SQL.Add('   from produto p ');
+  FDQPesquisa.SQL.Add('  where ((upper(p.descricao) like upper(:descricao)) ');
+  FDQPesquisa.SQL.Add('  or (upper(p.nome) like upper(:nome))) ');
+  FDQPesquisa.ParamByName('descricao').AsString := '%' + EdNome.Text + '%';
+  FDQPesquisa.ParamByName('nome').AsString := '%' + EdNome.Text + '%';
+  FDQPesquisa.Open;
+end;
+
+procedure TFPesquisa.BtConfirmarClick(Sender: TObject);
+begin
+  ModalResult := DbGridItem.DataSource.DataSet.FieldByName('COD_PRODUTO').AsInteger;
+end;
+
+procedure TFPesquisa.Button3Click(Sender: TObject);
+begin
+  ModalResult := -1;
+end;
+
+procedure TFPesquisa.DbGridItemKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if key = 13 then // Tecla Enter
+  begin
+    BtConfirmar.Click;
+  end;
+end;
+
+procedure TFPesquisa.EdNomeKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if key = 13 then // Tecla Enter
+  begin
+    BtPesquisa.Click;
+    DbGridItem.SetFocus;
+  end;
+end;
+
+procedure TFPesquisa.PesquisaProduto(aNome: String);
+begin
+  EdNome.Text := aNome;
+end;
+
+end.

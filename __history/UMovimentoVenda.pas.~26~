@@ -13,9 +13,14 @@ uses
 
 type
   TFMovimentoVenda = class(TFMovimentoEntrada)
+    Panel2: TPanel;
+    Label21: TLabel;
+    Label22: TLabel;
     procedure BtIniciarClick(Sender: TObject);
     procedure EdCodProdutoExit(Sender: TObject);
     procedure EdCodProdutoKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure EdCodigoKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
   private
     { Private declarations }
@@ -149,6 +154,18 @@ begin
   EdCodProduto.SetFocus;
 end;
 
+procedure TFMovimentoVenda.EdCodigoKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if key = 112 then  //Tecla P
+  begin
+    EdCodigo.Text := '0';
+
+  end;
+
+  inherited;
+end;
+
 procedure TFMovimentoVenda.EdCodProdutoExit(Sender: TObject);
 begin
   AtualizarProduto;
@@ -157,7 +174,7 @@ end;
 procedure TFMovimentoVenda.EdCodProdutoKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-  if key = 112 then  //Tecla F1
+  if key = 80 then  //Tecla P
   begin
     PesquisaProduto;
   end;

@@ -72,6 +72,10 @@ inherited FMovimentoVenda: TFMovimentoVenda
       end
     end
     inherited TsItem: TTabSheet
+      inherited Label1: TLabel
+        Top = 73
+        ExplicitTop = 73
+      end
       inherited Label2: TLabel
         Left = 831
         Top = 71
@@ -221,12 +225,12 @@ inherited FMovimentoVenda: TFMovimentoVenda
         ExplicitHeight = 32
       end
       inherited DbGridPagamento: TDBGrid
-        Width = 948
+        Top = 196
         Height = 327
       end
       inherited BtFinalizar: TButton
-        Top = 465
-        ExplicitTop = 465
+        Top = 529
+        ExplicitTop = 529
       end
     end
   end

@@ -221,11 +221,12 @@ inherited FMovimentoVenda: TFMovimentoVenda
         ExplicitHeight = 32
       end
       inherited DbGridPagamento: TDBGrid
-        Width = 948
         Height = 327
       end
       inherited BtFinalizar: TButton
+        Left = 719
         Top = 465
+        ExplicitLeft = 719
         ExplicitTop = 465
       end
     end

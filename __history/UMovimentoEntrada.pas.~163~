@@ -91,8 +91,6 @@ type
     Panel3: TPanel;
     Label23: TLabel;
     Label24: TLabel;
-    Panel4: TPanel;
-    Label25: TLabel;
     procedure EdCodigoExit(Sender: TObject);
     procedure BtIniciarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -676,7 +674,7 @@ end;
 procedure TFMovimentoEntrada.EdCodProdutoKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-  if key = 112 then  //Tecla F1
+  if key = 112 then  //Tecla F2
   begin
     PesquisaProduto;
   end;

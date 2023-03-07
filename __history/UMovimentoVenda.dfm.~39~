@@ -3,6 +3,7 @@ inherited FMovimentoVenda: TFMovimentoVenda
   PixelsPerInch = 96
   TextHeight = 13
   inherited Tsgeral: TPageControl
+    ActivePage = TsMovimento
     inherited TsMovimento: TTabSheet
       inherited Panel1: TPanel
         inherited Label10: TLabel
@@ -69,14 +70,43 @@ inherited FMovimentoVenda: TFMovimentoVenda
           ExplicitLeft = 1018
           ExplicitTop = 167
         end
+        object Panel2: TPanel
+          Left = 1
+          Top = 1
+          Width = 1861
+          Height = 41
+          Align = alTop
+          TabOrder = 5
+          ExplicitLeft = 544
+          ExplicitTop = 58
+          ExplicitWidth = 185
+          object Label21: TLabel
+            Left = 13
+            Top = 12
+            Width = 157
+            Height = 13
+            Caption = '[Enter] : Avan'#231'a Proximo Campo'
+          end
+          object Label22: TLabel
+            Left = 189
+            Top = 12
+            Width = 136
+            Height = 13
+            Caption = '[F1] - Adiconar Novo Cliente'
+          end
+        end
       end
     end
     inherited TsItem: TTabSheet
+      inherited Label1: TLabel
+        Top = 64
+        ExplicitTop = 64
+      end
       inherited Label2: TLabel
         Left = 831
-        Top = 71
+        Top = 60
         ExplicitLeft = 831
-        ExplicitTop = 71
+        ExplicitTop = 60
       end
       inherited Label7: TLabel
         Left = 846
@@ -138,10 +168,10 @@ inherited FMovimentoVenda: TFMovimentoVenda
       end
       inherited EdQuantidade: TEdit
         Left = 886
-        Top = 69
+        Top = 58
         Enabled = False
         ExplicitLeft = 886
-        ExplicitTop = 69
+        ExplicitTop = 58
       end
       inherited EdValorCompraItem: TEdit
         Left = 979
@@ -221,12 +251,12 @@ inherited FMovimentoVenda: TFMovimentoVenda
         ExplicitHeight = 32
       end
       inherited DbGridPagamento: TDBGrid
-        Width = 948
+        Top = 196
         Height = 327
       end
       inherited BtFinalizar: TButton
-        Top = 465
-        ExplicitTop = 465
+        Top = 529
+        ExplicitTop = 529
       end
     end
   end

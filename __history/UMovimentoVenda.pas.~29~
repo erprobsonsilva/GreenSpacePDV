@@ -157,7 +157,7 @@ end;
 procedure TFMovimentoVenda.EdCodProdutoKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-  if key = 112 then  //Tecla F1
+  if key = 112 then  //Tecla F2
   begin
     PesquisaProduto;
   end;

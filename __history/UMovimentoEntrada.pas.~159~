@@ -88,11 +88,6 @@ type
     Panel2: TPanel;
     Label21: TLabel;
     Label22: TLabel;
-    Panel3: TPanel;
-    Label23: TLabel;
-    Label24: TLabel;
-    Panel4: TPanel;
-    Label25: TLabel;
     procedure EdCodigoExit(Sender: TObject);
     procedure BtIniciarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -126,8 +121,6 @@ type
       Shift: TShiftState);
     procedure EdNomeKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure CbParceriaExit(Sender: TObject);
-    procedure CbParceriaKeyDown(Sender: TObject; var Key: Word;
-      Shift: TShiftState);
   private
     { Private declarations }
     procedure AtualizarProduto;
@@ -396,15 +389,6 @@ procedure TFMovimentoEntrada.CbParceriaExit(Sender: TObject);
 begin
   CadastrarCliente;
   AtualizarEntidade;
-end;
-
-procedure TFMovimentoEntrada.CbParceriaKeyDown(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
-begin
-  if key = 13 then // Tecla Enter
-  begin
-    BtCompra.SetFocus;
-  end;
 end;
 
 procedure TFMovimentoEntrada.CbTipoPagamentoKeyDown(Sender: TObject;
@@ -676,7 +660,7 @@ end;
 procedure TFMovimentoEntrada.EdCodProdutoKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-  if key = 112 then  //Tecla F1
+  if key = 80 then  //Tecla P
   begin
     PesquisaProduto;
   end;

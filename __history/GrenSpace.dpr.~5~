@@ -10,8 +10,7 @@ uses
   UMovimentoVenda in 'UMovimentoVenda.pas' {FMovimentoVenda},
   URelatorio in 'URelatorio.pas' {FRelatorio},
   URelatorioFiltro in 'URelatorioFiltro.pas' {FRelatorioFiltro},
-  URelatorioVendaPagamento in 'URelatorioVendaPagamento.pas' {FRelatorioVendaPagamento},
-  UPesquisa in 'UPesquisa.pas' {FPesquisa};
+  URelatorioVendaPagamento in 'URelatorioVendaPagamento.pas' {FRelatorioVendaPagamento};
 
 {$R *.res}
 
@@ -22,6 +21,5 @@ begin
   Application.CreateForm(Tdm, dm);
   Application.CreateForm(TFRelatorioFiltro, FRelatorioFiltro);
   Application.CreateForm(TFRelatorioVendaPagamento, FRelatorioVendaPagamento);
-  Application.CreateForm(TFPesquisa, FPesquisa);
   Application.Run;
 end.

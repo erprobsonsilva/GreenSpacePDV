@@ -93,6 +93,7 @@ type
     Label24: TLabel;
     Panel4: TPanel;
     Label25: TLabel;
+    Label26: TLabel;
     procedure EdCodigoExit(Sender: TObject);
     procedure BtIniciarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);

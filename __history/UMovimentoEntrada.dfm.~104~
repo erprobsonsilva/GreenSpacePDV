@@ -728,7 +728,7 @@ object FMovimentoEntrada: TFMovimentoEntrada
       object DbGridPagamento: TDBGrid
         Left = 3
         Top = 122
-        Width = 948
+        Width = 944
         Height = 319
         DataSource = DsMovimentoPagamento
         Font.Charset = DEFAULT_CHARSET

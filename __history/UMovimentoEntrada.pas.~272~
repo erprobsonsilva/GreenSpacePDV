@@ -306,7 +306,18 @@ begin
       end
       else
       begin
+      begin
+        xFdQueryInsert.SQL.Add('UPDATE SET entidade( ');
+        xFdQueryInsert.SQL.Add('         nome = :nome, ');
+        xFdQueryInsert.SQL.Add('         parceria = :parceria ');
+        xFdQueryInsert.SQL.Add(' WHERE cod_entidade = :cod_entidade ');
+        xFdQueryInsert.ParamByName('cod_entidade').AsInteger  := xFdQuerySeqEntidade.FieldByName('cod_entidade').AsInteger;
+        xFdQueryInsert.ParamByName('nome').AsString           := EdNome.Text;
+        xFdQueryInsert.ParamByName('parceria').AsInteger := CbParceria.ItemIndex;
+
+        xFdQueryInsert.ExecSQL;
         EdCodigo.Text := IntToStr(xFdQuery.FieldByName('cod_entidade').AsInteger);
+      end;
       end;
     finally
       FreeAndNil(xFdQueryInsert);
@@ -341,6 +352,7 @@ begin
 
     EdTotalItens.Text := FormatFloat('#0.00', xFdQuery.FieldByName('valor_total_compra').AsFloat);
     EdTotalSemDesc.Text := FormatFloat('#0.00', xFdQuery.FieldByName('valor_total_compra').AsFloat);
+
 
     if FParceria = 1 then
     begin
@@ -492,7 +504,6 @@ var
 begin
   xPesquisa := TFPesquisa.Create(nil);
   xPesquisa.BtConfirmar.Visible := false;
-  xPesquisa.PesquisaProduto(EdCodigo.Text);
   xPesquisa.ShowModal;
   FreeAndNil(xPesquisa);
 end;
@@ -654,7 +665,10 @@ begin
     FreeAndNil(xFdQuery);
   end;
 
-  EdDataFabricacao.SetFocus;
+  if EdDataFabricacao.Visible then
+    EdDataFabricacao.SetFocus
+  else
+    BtAdicionarProduto.Click;
 end;
 
 procedure TFMovimentoEntrada.BtAdicionarProdutoClick(Sender: TObject);
@@ -688,9 +702,7 @@ begin
   end;
 
   InserirProduto;
-
   CalculaTotalCompra;
-
 end;
 
 procedure TFMovimentoEntrada.BtConsultaProdutoClick(Sender: TObject);
@@ -759,11 +771,6 @@ end;
 procedure TFMovimentoEntrada.EdCodProdutoKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-  if key = 112 then  //Tecla F1
-  begin
-    PesquisaProduto;
-  end;
-
   if key = 88 then // Tecla C
   begin
     CancelarItem;
@@ -916,7 +923,10 @@ begin
 
   if key = 113 then
   begin
-    ConsultaPreco;
+    if (Tsgeral.TabIndex = 1) then
+      PesquisaProduto
+    else
+      ConsultaPreco;
   end;
 end;
 
@@ -1069,6 +1079,7 @@ procedure TFMovimentoEntrada.LimpaCampoProduto;
 begin
   EdCodProduto.Text := '';
   EdNomeProduto.Text := '';
+  CbParceria.ItemIndex := 0;
   EdCpfCnpj.Text := '';
   EdQuantidade.Text := '1';
   EdPrecoProduto.Text := '0,00';
@@ -1098,8 +1109,8 @@ begin
   xPesquisa.PesquisaProduto(EdCodigo.Text);
   if (xPesquisa.ShowModal > 0) then
   begin
-    EdCodProduto.Text := IntToStr(xPesquisa.ShowModal);
-    BtAdicionarProduto.Click;
+    EdCodProduto.Text := IntToStr(xPesquisa.ModalResult);
+    AtualizarProduto;
   end
   else
     EdCodigo.Text := '';

@@ -135,7 +135,7 @@ object FMovimentoEntrada: TFMovimentoEntrada
           Font.Style = []
           ImageIndex = 0
           ParentFont = False
-          TabOrder = 3
+          TabOrder = 4
           OnClick = BtIniciarClick
         end
         object EdCpfCnpj: TEdit
@@ -166,7 +166,7 @@ object FMovimentoEntrada: TFMovimentoEntrada
           Font.Style = []
           ItemIndex = 0
           ParentFont = False
-          TabOrder = 4
+          TabOrder = 3
           Text = 'NENHUM'
           Visible = False
           OnExit = CbParceriaExit
@@ -218,7 +218,7 @@ object FMovimentoEntrada: TFMovimentoEntrada
             Top = -1
             Width = 256
             Height = 32
-            Caption = '[F1] - Novo Cliente'
+            Caption = '[F1] - Novo/Editar Cliente'
             TabOrder = 2
             OnClick = Button6Click
           end

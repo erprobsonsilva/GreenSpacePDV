@@ -306,7 +306,18 @@ begin
       end
       else
       begin
+      begin
+        xFdQueryInsert.SQL.Add('UPDATE entidade SET ');
+        xFdQueryInsert.SQL.Add('         nome = :nome, ');
+        xFdQueryInsert.SQL.Add('         parceria = :parceria ');
+        xFdQueryInsert.SQL.Add(' WHERE cod_entidade = :cod_entidade ');
+        xFdQueryInsert.ParamByName('cod_entidade').AsInteger  := xFdQuery.FieldByName('cod_entidade').AsInteger;
+        xFdQueryInsert.ParamByName('nome').AsString           := EdNome.Text;
+        xFdQueryInsert.ParamByName('parceria').AsInteger := CbParceria.ItemIndex;
+
+        xFdQueryInsert.ExecSQL;
         EdCodigo.Text := IntToStr(xFdQuery.FieldByName('cod_entidade').AsInteger);
+      end;
       end;
     finally
       FreeAndNil(xFdQueryInsert);
@@ -341,6 +352,7 @@ begin
 
     EdTotalItens.Text := FormatFloat('#0.00', xFdQuery.FieldByName('valor_total_compra').AsFloat);
     EdTotalSemDesc.Text := FormatFloat('#0.00', xFdQuery.FieldByName('valor_total_compra').AsFloat);
+
 
     if FParceria = 1 then
     begin
@@ -646,8 +658,10 @@ begin
                                                                 xFdQuery.FieldByName('preco').AsFloat);
 
       EdPrecoProduto.Text := FormatFloat('#0.00', (xFdQuery.FieldByName('preco').AsFloat * StrToFloat(EdQuantidade.Text)));
+      EdUnidadeMedida.Text := xFdQuery.FieldByName('tp_unidade_medida').AsString;
     end;
 
+    EdCodProduto.Text := xFdQuery.FieldByName('cod_produto').AsString;
   finally
     xFdQuery.Close;
     FreeAndNil(xFdQuery);
@@ -759,14 +773,30 @@ end;
 procedure TFMovimentoEntrada.EdCodProdutoKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
+  //if key = 88 then // Tecla C
+  //begin
+  //  CancelarItem;
+  //end;
+
+//  if key = 88 then // Tecla X
+//  begin
+//    EdQuantidade.Text := EdCodProduto.Text;
+//    EdCodProduto.Text := '';
+//  end;
+//
+//  if key = 70 then // Tecla F
+//  begin
+//    BtFinalizarItem.Click;
+//  end;
+//
+//  if key = 13 then // Tecla Enter
+//  begin
+//    AtualizarProduto;
+//  end;    4
+
   if key = 112 then  //Tecla F1
   begin
     PesquisaProduto;
-  end;
-
-  if key = 88 then // Tecla C
-  begin
-    CancelarItem;
   end;
 
   if key = 88 then // Tecla X
@@ -916,7 +946,10 @@ begin
 
   if key = 113 then
   begin
-    ConsultaPreco;
+    if (Tsgeral.TabIndex = 1) then
+      PesquisaProduto
+    else
+      ConsultaPreco;
   end;
 end;
 

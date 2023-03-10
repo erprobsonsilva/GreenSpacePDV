@@ -14,10 +14,14 @@ uses
 type
   TFMovimentoVenda = class(TFMovimentoEntrada)
     procedure BtIniciarClick(Sender: TObject);
+    procedure EdCodProdutoExit(Sender: TObject);
+    procedure EdCodProdutoKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     { Private declarations }
   public
     { Public declarations }
+    procedure PesquisaProduto;
   end;
 
 var
@@ -80,6 +84,51 @@ begin
 
   Tsgeral.TabIndex := 1;
   EdCodProduto.SetFocus;
+end;
+
+procedure TFMovimentoVenda.EdCodProdutoExit(Sender: TObject);
+begin
+  AtualizarProduto;
+end;
+
+procedure TFMovimentoVenda.EdCodProdutoKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if key = 112 then  //Tecla F1
+  begin
+    PesquisaProduto;
+  end;
+
+  if key = 88 then // Tecla X
+  begin
+    EdQuantidade.Text := EdCodProduto.Text;
+    EdCodProduto.Text := '';
+  end;
+
+  if key = 70 then // Tecla F
+  begin
+    BtFinalizarItem.Click;
+  end;
+
+  if key = 13 then // Tecla Enter
+  begin
+    AtualizarProduto;
+  end;
+end;
+
+procedure TFMovimentoVenda.PesquisaProduto;
+var
+  xPesquisa : TFPesquisa;
+begin
+  xPesquisa:= TFPesquisa.Create(nil);
+  xPesquisa.PesquisaProduto(EdCodProduto.Text);
+  if (xPesquisa.ShowModal > 0) then
+  begin
+    EdCodProduto.Text := IntToStr(xPesquisa.ModalResult);
+    AtualizarProduto;
+  end
+  else
+    EdCodigo.Text := '';
 end;
 
 end.

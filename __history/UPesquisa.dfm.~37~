@@ -25,9 +25,9 @@ object FPesquisa: TFPesquisa
     object Label1: TLabel
       Left = 7
       Top = 92
-      Width = 181
+      Width = 59
       Height = 24
-      Caption = 'Nome/C'#243'digo barra:'
+      Caption = 'Nome:'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -20
@@ -49,7 +49,7 @@ object FPesquisa: TFPesquisa
       ParentFont = False
     end
     object BtPesquisa: TButton
-      Left = 545
+      Left = 423
       Top = 88
       Width = 128
       Height = 35
@@ -64,8 +64,8 @@ object FPesquisa: TFPesquisa
       OnClick = BtPesquisaClick
     end
     object EdNome: TEdit
-      Left = 194
-      Top = 90
+      Left = 72
+      Top = 89
       Width = 345
       Height = 32
       Font.Charset = DEFAULT_CHARSET
@@ -170,73 +170,8 @@ object FPesquisa: TFPesquisa
   end
   object FDQPesquisa: TFDQuery
     Connection = dm.ConnectionPostgres
-    SQL.Strings = (
-      'select * '
-      '  from produto p'
-      ' where ((upper(p.descricao) like upper(:descricao))'
-      '    or (upper(p.nome) like upper(:nome))'
-      '    or (upper(p.cod_barra) like upper(:cod_barra)))')
     Left = 920
     Top = 40
-    ParamData = <
-      item
-        Name = 'DESCRICAO'
-        DataType = ftString
-        ParamType = ptInput
-        Value = '%coca%'
-      end
-      item
-        Name = 'NOME'
-        DataType = ftString
-        ParamType = ptInput
-        Value = #39'%coca%'#39
-      end
-      item
-        Name = 'COD_BARRA'
-        DataType = ftString
-        ParamType = ptInput
-        Value = #39'%%'#39
-      end>
-    object FDQPesquisacod_produto: TFMTBCDField
-      DisplayWidth = 7
-      FieldName = 'cod_produto'
-      Origin = 'cod_produto'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Precision = 15
-      Size = 0
-    end
-    object FDQPesquisacod_balanca: TFMTBCDField
-      DisplayWidth = 7
-      FieldName = 'cod_balanca'
-      Origin = 'cod_balanca'
-      Precision = 15
-      Size = 0
-    end
-    object FDQPesquisadescricao: TWideStringField
-      DisplayWidth = 30
-      FieldName = 'descricao'
-      Origin = 'descricao'
-      Size = 200
-    end
-    object FDQPesquisapreco: TBCDField
-      FieldName = 'preco'
-      Origin = 'preco'
-      DisplayFormat = 'R$ #,,0.00'
-      Precision = 15
-      Size = 2
-    end
-    object FDQPesquisaquantidade: TBCDField
-      FieldName = 'quantidade'
-      Origin = 'quantidade'
-      DisplayFormat = '#,,0.000'
-      Precision = 15
-      Size = 3
-    end
-    object FDQPesquisacod_barra: TWideStringField
-      FieldName = 'cod_barra'
-      Origin = 'cod_barra'
-      Size = 200
-    end
   end
   object DsPEsquisa: TDataSource
     DataSet = FDQPesquisa

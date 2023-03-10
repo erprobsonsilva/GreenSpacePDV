@@ -16,20 +16,19 @@ type
     RLLabel1: TRLLabel;
     RLSystemInfo1: TRLSystemInfo;
     RLSystemInfo2: TRLSystemInfo;
+    RLBand2: TRLBand;
     RLBand3: TRLBand;
     RLSystemInfo3: TRLSystemInfo;
     RLSystemInfo4: TRLSystemInfo;
     RLBand4: TRLBand;
     DsGeral: TDataSource;
     FdGeral: TFDQuery;
-    RLLabel2: TRLLabel;
-    RLLabel3: TRLLabel;
-    RLLabel5: TRLLabel;
-    RLGroup1: TRLGroup;
-    RLBand2: TRLBand;
     RLDBText3: TRLDBText;
     RLDBText1: TRLDBText;
     RldValorPagamento: TRLDBText;
+    RLLabel2: TRLLabel;
+    RLLabel3: TRLLabel;
+    RLLabel5: TRLLabel;
     procedure RLReport1BeforePrint(Sender: TObject; var PrintIt: Boolean);
   private
     { Private declarations }

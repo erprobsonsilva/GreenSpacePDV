@@ -72,9 +72,50 @@ object FRelatorioVendaPagamento: TFRelatorioVendaPagamento
         Transparent = False
       end
     end
+    object RLBand2: TRLBand
+      Left = 38
+      Top = 123
+      Width = 718
+      Height = 22
+      Borders.Sides = sdCustom
+      Borders.DrawLeft = False
+      Borders.DrawTop = False
+      Borders.DrawRight = False
+      Borders.DrawBottom = True
+      object RLDBText3: TRLDBText
+        Left = 308
+        Top = 0
+        Width = 98
+        Height = 16
+        Align = faTopOnly
+        DataField = 'data_movimento'
+        DataSource = DsGeral
+        Text = ''
+      end
+      object RLDBText1: TRLDBText
+        Left = 3
+        Top = 0
+        Width = 86
+        Height = 16
+        Align = faTopOnly
+        DataField = 'tp_pagamento'
+        DataSource = DsGeral
+        Text = ''
+      end
+      object RldValorPagamento: TRLDBText
+        Left = 140
+        Top = 0
+        Width = 101
+        Height = 16
+        Align = faTopOnly
+        DataField = 'valor_pagamento'
+        DataSource = DsGeral
+        Text = ''
+      end
+    end
     object RLBand3: TRLBand
       Left = 38
-      Top = 181
+      Top = 145
       Width = 718
       Height = 24
       BandType = btFooter
@@ -130,54 +171,6 @@ object FRelatorioVendaPagamento: TFRelatorioVendaPagamento
         Caption = 'Data Venda'
       end
     end
-    object RLGroup1: TRLGroup
-      Left = 38
-      Top = 123
-      Width = 718
-      Height = 58
-      DataFields = 'valor_pagamento'
-      object RLBand2: TRLBand
-        Left = 0
-        Top = 0
-        Width = 718
-        Height = 22
-        Borders.Sides = sdCustom
-        Borders.DrawLeft = False
-        Borders.DrawTop = False
-        Borders.DrawRight = False
-        Borders.DrawBottom = True
-        object RLDBText3: TRLDBText
-          Left = 308
-          Top = 0
-          Width = 98
-          Height = 16
-          Align = faTopOnly
-          DataField = 'data_movimento'
-          DataSource = DsGeral
-          Text = ''
-        end
-        object RLDBText1: TRLDBText
-          Left = 3
-          Top = 0
-          Width = 86
-          Height = 16
-          Align = faTopOnly
-          DataField = 'tp_pagamento'
-          DataSource = DsGeral
-          Text = ''
-        end
-        object RldValorPagamento: TRLDBText
-          Left = 140
-          Top = 0
-          Width = 101
-          Height = 16
-          Align = faTopOnly
-          DataField = 'valor_pagamento'
-          DataSource = DsGeral
-          Text = ''
-        end
-      end
-    end
   end
   object DsGeral: TDataSource
     DataSet = FdGeral
@@ -211,21 +204,15 @@ object FRelatorioVendaPagamento: TFRelatorioVendaPagamento
     ParamData = <
       item
         Name = 'TP_PAGAMENTO'
-        DataType = ftInteger
         ParamType = ptInput
-        Value = 0
       end
       item
         Name = 'DATA_MOVIMENTO_INI'
-        DataType = ftDate
         ParamType = ptInput
-        Value = 44986d
       end
       item
         Name = 'DATA_MOVIMENTO_FIM'
-        DataType = ftDate
         ParamType = ptInput
-        Value = 44995d
       end>
   end
 end

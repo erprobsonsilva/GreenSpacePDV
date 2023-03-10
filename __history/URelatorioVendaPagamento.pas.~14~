@@ -30,6 +30,8 @@ type
     RLDBText3: TRLDBText;
     RLDBText1: TRLDBText;
     RldValorPagamento: TRLDBText;
+    RLSubDetail1: TRLSubDetail;
+    RLLabel4: TRLLabel;
     procedure RLReport1BeforePrint(Sender: TObject; var PrintIt: Boolean);
   private
     { Private declarations }

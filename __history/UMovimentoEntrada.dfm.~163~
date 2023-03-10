@@ -24,7 +24,7 @@ object FMovimentoEntrada: TFMovimentoEntrada
     Top = 0
     Width = 1871
     Height = 709
-    ActivePage = TsItem
+    ActivePage = TsMovimento
     Align = alClient
     TabOrder = 0
     OnChange = TsgeralChange
@@ -111,7 +111,6 @@ object FMovimentoEntrada: TFMovimentoEntrada
           Top = 176
           Width = 451
           Height = 32
-          CharCase = ecUpperCase
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -220,7 +219,7 @@ object FMovimentoEntrada: TFMovimentoEntrada
             Height = 32
             Caption = '[F1] - Novo Cliente'
             TabOrder = 2
-            OnClick = Button6Click
+            OnClick = Button1Click
           end
         end
       end

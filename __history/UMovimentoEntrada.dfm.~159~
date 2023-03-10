@@ -24,7 +24,7 @@ object FMovimentoEntrada: TFMovimentoEntrada
     Top = 0
     Width = 1871
     Height = 709
-    ActivePage = TsItem
+    ActivePage = TsPagamento
     Align = alClient
     TabOrder = 0
     OnChange = TsgeralChange
@@ -111,7 +111,6 @@ object FMovimentoEntrada: TFMovimentoEntrada
           Top = 176
           Width = 451
           Height = 32
-          CharCase = ecUpperCase
           Enabled = False
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
@@ -195,6 +194,13 @@ object FMovimentoEntrada: TFMovimentoEntrada
             Height = 24
             Caption = '[Enter] : Avan'#231'a Proximo Campo'
           end
+          object Label22: TLabel
+            Left = 325
+            Top = 1
+            Width = 252
+            Height = 24
+            Caption = '[F1] - Adiconar Novo Cliente'
+          end
           object BtConsultaProduto: TButton
             Left = 852
             Top = -1
@@ -212,15 +218,6 @@ object FMovimentoEntrada: TFMovimentoEntrada
             Caption = '[C] - Cancelar Cupom'
             TabOrder = 1
             OnClick = Button1Click
-          end
-          object Button6: TButton
-            Left = 328
-            Top = -1
-            Width = 256
-            Height = 32
-            Caption = '[F1] - Novo Cliente'
-            TabOrder = 2
-            OnClick = Button6Click
           end
         end
       end
@@ -603,28 +600,26 @@ object FMovimentoEntrada: TFMovimentoEntrada
         TabOrder = 14
         object Label23: TLabel
           Left = 14
-          Top = 2
+          Top = 1
           Width = 232
           Height = 24
           Caption = '[Enter] : Adiciona Produto'
         end
+        object Label24: TLabel
+          Left = 282
+          Top = 1
+          Width = 209
+          Height = 24
+          Caption = '[F1] - Pesquisa Produto'
+        end
         object Button2: TButton
-          Left = 516
+          Left = 498
           Top = -1
           Width = 256
           Height = 32
           Caption = '[C] - Cancelar Cupom'
           TabOrder = 0
           OnClick = Button1Click
-        end
-        object Button5: TButton
-          Left = 252
-          Top = -1
-          Width = 256
-          Height = 32
-          Caption = '[F2] - Consultar Pre'#231'o'
-          TabOrder = 1
-          OnClick = Button5Click
         end
       end
     end

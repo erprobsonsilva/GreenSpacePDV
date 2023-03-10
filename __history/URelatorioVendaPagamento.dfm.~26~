@@ -74,7 +74,7 @@ object FRelatorioVendaPagamento: TFRelatorioVendaPagamento
     end
     object RLBand3: TRLBand
       Left = 38
-      Top = 181
+      Top = 187
       Width = 718
       Height = 24
       BandType = btFooter
@@ -134,7 +134,7 @@ object FRelatorioVendaPagamento: TFRelatorioVendaPagamento
       Left = 38
       Top = 123
       Width = 718
-      Height = 58
+      Height = 64
       DataFields = 'valor_pagamento'
       object RLBand2: TRLBand
         Left = 0
@@ -174,6 +174,20 @@ object FRelatorioVendaPagamento: TFRelatorioVendaPagamento
           Align = faTopOnly
           DataField = 'valor_pagamento'
           DataSource = DsGeral
+          Text = ''
+        end
+      end
+      object RLSubDetail1: TRLSubDetail
+        Left = 0
+        Top = 22
+        Width = 718
+        Height = 64
+        object RLDBText2: TRLDBText
+          Left = 140
+          Top = 6
+          Width = 70
+          Height = 16
+          SecondHolder = RldValorPagamento
           Text = ''
         end
       end

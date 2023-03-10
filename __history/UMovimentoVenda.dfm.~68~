@@ -262,8 +262,14 @@ inherited FMovimentoVenda: TFMovimentoVenda
   inherited FdQMovimentoItem: TFDQuery
     Left = 736
     Top = 208
-    inherited FdQMovimentoItemcod_item_movimento: TFMTBCDField
-      DisplayWidth = 7
+    inherited FdQMovimentoItemquantidade: TBCDField
+      DisplayFormat = '#,,0.00'
+    end
+    inherited FdQMovimentoItempreco_unitario: TBCDField
+      DisplayFormat = 'R$ #,,0.00'
+    end
+    inherited FdQMovimentoItempreco: TBCDField
+      DisplayFormat = 'R$ #,,0.00'
     end
   end
 end

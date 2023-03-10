@@ -25,9 +25,9 @@ object FPesquisa: TFPesquisa
     object Label1: TLabel
       Left = 7
       Top = 92
-      Width = 181
+      Width = 59
       Height = 24
-      Caption = 'Nome/C'#243'digo barra:'
+      Caption = 'Nome:'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -20
@@ -49,7 +49,7 @@ object FPesquisa: TFPesquisa
       ParentFont = False
     end
     object BtPesquisa: TButton
-      Left = 545
+      Left = 423
       Top = 88
       Width = 128
       Height = 35
@@ -64,8 +64,8 @@ object FPesquisa: TFPesquisa
       OnClick = BtPesquisaClick
     end
     object EdNome: TEdit
-      Left = 194
-      Top = 90
+      Left = 72
+      Top = 89
       Width = 345
       Height = 32
       Font.Charset = DEFAULT_CHARSET

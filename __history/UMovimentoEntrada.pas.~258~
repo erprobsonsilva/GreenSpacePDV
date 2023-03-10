@@ -653,10 +653,7 @@ begin
     FreeAndNil(xFdQuery);
   end;
 
-  if EdDataFabricacao.Visible then
-    EdDataFabricacao.SetFocus
-  else
-    BtAdicionarProduto.Click;
+  EdDataFabricacao.SetFocus;
 end;
 
 procedure TFMovimentoEntrada.BtAdicionarProdutoClick(Sender: TObject);
@@ -690,7 +687,9 @@ begin
   end;
 
   InserirProduto;
+
   CalculaTotalCompra;
+
 end;
 
 procedure TFMovimentoEntrada.BtConsultaProdutoClick(Sender: TObject);
@@ -759,6 +758,11 @@ end;
 procedure TFMovimentoEntrada.EdCodProdutoKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
+  if key = 112 then  //Tecla F1
+  begin
+    PesquisaProduto;
+  end;
+
   if key = 88 then // Tecla C
   begin
     CancelarItem;
@@ -911,10 +915,7 @@ begin
 
   if key = 113 then
   begin
-    if (Tsgeral.TabIndex = 1) then
-      PesquisaProduto
-    else
-      ConsultaPreco;
+    ConsultaPreco;
   end;
 end;
 
@@ -1097,8 +1098,8 @@ begin
   xPesquisa.PesquisaProduto(EdCodigo.Text);
   if (xPesquisa.ShowModal > 0) then
   begin
-    EdCodProduto.Text := IntToStr(xPesquisa.ModalResult);
-    AtualizarProduto;
+    EdCodProduto.Text := IntToStr(xPesquisa.ShowModal);
+    BtAdicionarProduto.Click;
   end
   else
     EdCodigo.Text := '';

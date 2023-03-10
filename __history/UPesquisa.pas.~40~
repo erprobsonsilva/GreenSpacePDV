@@ -26,12 +26,6 @@ type
     DsPEsquisa: TDataSource;
     Panel4: TPanel;
     Label23: TLabel;
-    FDQPesquisacod_produto: TFMTBCDField;
-    FDQPesquisacod_balanca: TFMTBCDField;
-    FDQPesquisapreco: TBCDField;
-    FDQPesquisaquantidade: TBCDField;
-    FDQPesquisadescricao: TWideStringField;
-    FDQPesquisacod_barra: TWideStringField;
     procedure BtPesquisaClick(Sender: TObject);
     procedure BtConfirmarClick(Sender: TObject);
     procedure Button3Click(Sender: TObject);
@@ -55,9 +49,13 @@ implementation
 procedure TFPesquisa.BtPesquisaClick(Sender: TObject);
 begin
   FDQPesquisa.Close;
+  FDQPesquisa.SQL.Clear;
+  FDQPesquisa.SQL.Add(' select * ');
+  FDQPesquisa.SQL.Add('   from produto p ');
+  FDQPesquisa.SQL.Add('  where ((upper(p.descricao) like upper(:descricao)) ');
+  FDQPesquisa.SQL.Add('  or (upper(p.nome) like upper(:nome))) ');
   FDQPesquisa.ParamByName('descricao').AsString := '%' + EdNome.Text + '%';
   FDQPesquisa.ParamByName('nome').AsString := '%' + EdNome.Text + '%';
-  FDQPesquisa.ParamByName('cod_barra').AsString := '%' + EdNome.Text + '%';
   FDQPesquisa.Open;
 end;
 

@@ -55,9 +55,13 @@ implementation
 procedure TFPesquisa.BtPesquisaClick(Sender: TObject);
 begin
   FDQPesquisa.Close;
+  FDQPesquisa.SQL.Clear;
+  FDQPesquisa.SQL.Add(' select * ');
+  FDQPesquisa.SQL.Add('   from produto p ');
+  FDQPesquisa.SQL.Add('  where ((upper(p.descricao) like upper(:descricao)) ');
+  FDQPesquisa.SQL.Add('  or (upper(p.nome) like upper(:nome))) ');
   FDQPesquisa.ParamByName('descricao').AsString := '%' + EdNome.Text + '%';
   FDQPesquisa.ParamByName('nome').AsString := '%' + EdNome.Text + '%';
-  FDQPesquisa.ParamByName('cod_barra').AsString := '%' + EdNome.Text + '%';
   FDQPesquisa.Open;
 end;
 

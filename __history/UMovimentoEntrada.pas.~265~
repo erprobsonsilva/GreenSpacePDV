@@ -911,10 +911,7 @@ begin
 
   if key = 113 then
   begin
-    if (Tsgeral.TabIndex = 1) then
-      PesquisaProduto
-    else
-      ConsultaPreco;
+    ConsultaPreco;
   end;
 end;
 

@@ -74,7 +74,7 @@ object FRelatorioVendaPagamento: TFRelatorioVendaPagamento
     end
     object RLBand3: TRLBand
       Left = 38
-      Top = 181
+      Top = 187
       Width = 718
       Height = 24
       BandType = btFooter
@@ -134,7 +134,7 @@ object FRelatorioVendaPagamento: TFRelatorioVendaPagamento
       Left = 38
       Top = 123
       Width = 718
-      Height = 58
+      Height = 64
       DataFields = 'valor_pagamento'
       object RLBand2: TRLBand
         Left = 0

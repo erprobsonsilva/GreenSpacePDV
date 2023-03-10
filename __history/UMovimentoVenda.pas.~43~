@@ -18,6 +18,7 @@ type
     { Private declarations }
   public
     { Public declarations }
+    procedure PesquisaProduto;
   end;
 
 var
@@ -80,6 +81,21 @@ begin
 
   Tsgeral.TabIndex := 1;
   EdCodProduto.SetFocus;
+end;
+
+procedure TFMovimentoVenda.PesquisaProduto;
+var
+  xPesquisa : TFPesquisa;
+begin
+  xPesquisa:= TFPesquisa.Create(nil);
+  xPesquisa.PesquisaProduto(EdCodProduto.Text);
+  if (xPesquisa.ShowModal > 0) then
+  begin
+    EdCodProduto.Text := IntToStr(xPesquisa.ModalResult);
+    AtualizarProduto;
+  end
+  else
+    EdCodigo.Text := '';
 end;
 
 end.

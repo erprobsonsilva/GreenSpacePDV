@@ -30,7 +30,6 @@ type
     CbTipoPagamento: TComboBox;
     Label6: TLabel;
     Button1: TButton;
-    procedure DpDataInicioChange(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure EdCodProdutoExit(Sender: TObject);
     procedure EdCodProdutoKeyDown(Sender: TObject; var Key: Word;
@@ -145,12 +144,6 @@ begin
   FreeAndNil(TRelatorio);
 end;
 
-procedure TFRelatorioFiltro.DpDataInicioChange(Sender: TObject);
-begin
-  DtpDataInicio.Date := Date;
-  DtpDataFim.Date := Date;
-end;
-
 procedure TFRelatorioFiltro.EdCodProdutoExit(Sender: TObject);
 begin
   AtualizaProduto;
@@ -168,6 +161,10 @@ end;
 procedure TFRelatorioFiltro.FormCreate(Sender: TObject);
 begin
   PageControl1.TabIndex := 0;
+  DtpDataInicio.Date := Date;
+  DtpDataFim.Date := Date;
+  DtpInicioVenda.Date := Date;
+  DtpVendaFim.Date := Date;
 end;
 
 end.

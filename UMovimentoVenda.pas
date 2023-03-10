@@ -114,10 +114,11 @@ begin
 
     xFbMovimento := TFDQuery.Create(nil);
     xFbMovimento.Connection := dm.ConnectionPostgres;
-    xFbMovimento.SQL.Add(' insert into movimento (cod_movimento, tipo_movimento, cod_entidade, data_movimento) ');
-    xFbMovimento.SQL.Add('                values (:cod_movimento, :tipo_movimento, :cod_entidade, :data_movimento)');
+    xFbMovimento.SQL.Add(' insert into movimento (cod_movimento, tipo_movimento, cod_entidade, data_movimento, flg_cancelado) ');
+    xFbMovimento.SQL.Add('                values (:cod_movimento, :tipo_movimento, :cod_entidade, :data_movimento, :flg_cancelado)');
     xFbMovimento.ParamByName('cod_movimento').AsInteger := FSequenciaMovimento;
     xFbMovimento.ParamByName('tipo_movimento').AsString := 'S';
+    xFbMovimento.ParamByName('flg_cancelado').AsString := 'N';
 
     if EdCodigo.Text <> '' then
       xFbMovimento.ParamByName('cod_entidade').AsInteger := StrToInt(EdCodigo.Text)

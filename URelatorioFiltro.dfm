@@ -30,8 +30,6 @@ object FRelatorioFiltro: TFRelatorioFiltro
     Font.Style = []
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 864
-    ExplicitHeight = 445
     object TsProduto: TTabSheet
       Caption = 'Produto'
       object Label1: TLabel

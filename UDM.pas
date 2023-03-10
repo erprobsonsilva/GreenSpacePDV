@@ -51,6 +51,7 @@ procedure Tdm.FormCreate(Sender: TObject);
 begin
   ConnectionPostgres.Open;
   DtProduto.Open;
+  DtEntidade.Open;
 end;
 
 end.

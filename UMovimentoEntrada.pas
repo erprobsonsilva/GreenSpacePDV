@@ -93,6 +93,9 @@ type
     Panel4: TPanel;
     Label25: TLabel;
     FdQMovimentoPagamentotp_pagamento: TWideStringField;
+    Label26: TLabel;
+    Label27: TLabel;
+    Label28: TLabel;
     procedure EdCodigoExit(Sender: TObject);
     procedure BtIniciarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -128,6 +131,17 @@ type
     procedure CbParceriaExit(Sender: TObject);
     procedure CbParceriaKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure EdUnidadeMedidaKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure EdDataFabricacaoKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure EdQuantidadeKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure EdPrecoProdutoKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure EdDataValidadeKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
   private
     { Private declarations }
     procedure AtualizarProduto;
@@ -139,10 +153,14 @@ type
     procedure CalculaTotalCompra;
     procedure InserirTroco(ACodMovimento: Integer);
     procedure CancelarPagamento;
+    procedure CancelarCupom;
     procedure CadastrarCliente;
+
+    Procedure LimpaCampos;
 
     procedure LimpaCampoProduto;
     procedure PesquisaProduto;
+    procedure CalculaPrecoUnitario;
   public
     { Public declarations }
     FSequenciaMovimento : integer;
@@ -175,10 +193,11 @@ begin
 
     xFbMovimento := TFDQuery.Create(nil);
     xFbMovimento.Connection := dm.ConnectionPostgres;
-    xFbMovimento.SQL.Add(' insert into movimento (cod_movimento, tipo_movimento, cod_entidade, data_movimento) ');
-    xFbMovimento.SQL.Add('                values (:cod_movimento, :tipo_movimento, :cod_entidade, :data_movimento)');
+    xFbMovimento.SQL.Add(' insert into movimento (cod_movimento, tipo_movimento, cod_entidade, data_movimento, FLG_CANCELADO) ');
+    xFbMovimento.SQL.Add('                values (:cod_movimento, :tipo_movimento, :cod_entidade, :data_movimento, :FLG_CANCELADO)');
     xFbMovimento.ParamByName('cod_movimento').AsInteger := FSequenciaMovimento;
     xFbMovimento.ParamByName('tipo_movimento').AsString := 'E';
+    xFbMovimento.ParamByName('flg_cancelado').AsString := 'N';
 
     if EdCodigo.Text <> '' then
       xFbMovimento.ParamByName('cod_entidade').AsInteger := StrToInt(EdCodigo.Text)
@@ -219,13 +238,7 @@ begin
     Exit;
   end;
 
-  LimpaCampoProduto;
-  EdCodigo.Text := '';
-  FSequenciaMovimento := 0;
-  FParceria := 0;
-  Tsgeral.TabIndex := 0;
-  EdCodigo.SetFocus;
-  EdNome.Text := '';
+  LimpaCampos;
 end;
 
 procedure TFMovimentoEntrada.CadastrarCliente;
@@ -277,6 +290,14 @@ begin
       FreeAndNil(xFdQuery);
     end;
   end;
+end;
+
+procedure TFMovimentoEntrada.CalculaPrecoUnitario;
+begin
+  if (StrToFloat(EdPrecoProduto.Text) > 0) and  (StrToFloat(EdQuantidade.Text) > 0) then
+    EdPrecoUnit.Text := FormatFloat('#0.00', StrToFloat(EdPrecoProduto.Text) / StrToFloat(EdQuantidade.Text))
+  else
+    EdPrecoUnit.Text := '0';
 end;
 
 procedure TFMovimentoEntrada.CalculaTotalCompra;
@@ -339,6 +360,30 @@ begin
   FdQMovimentoItem.Close;
   FdQMovimentoItem.ParamByName('cod_movimento').AsInteger := FSequenciaMovimento;
   FdQMovimentoItem.Open;
+end;
+
+procedure TFMovimentoEntrada.CancelarCupom;
+var
+  xFbMovimentoCupom : TFDQuery;
+begin
+  if (FSequenciaMovimento > 0) then
+  begin
+    if MessageDlg('Deseja relamente excluir do cupom?', mtConfirmation, [mbYes, mbNo],0) = mrYes then
+    begin
+      xFbMovimentoCupom := TFDQuery.Create(nil);
+      xFbMovimentoCupom.Connection := dm.ConnectionPostgres;
+      xFbMovimentoCupom.SQL.Add(' UPDATE movimento SET ');
+      xFbMovimentoCupom.SQL.Add('         FLG_CANCELADO     = :FLG_CANCELADO ');
+      xFbMovimentoCupom.SQL.Add('  WHERE COD_MOVIMENTO      = :COD_MOVIMENTO ');
+
+      xFbMovimentoCupom.ParamByName('cod_movimento').AsInteger := FSequenciaMovimento;
+      xFbMovimentoCupom.ParamByName('FLG_CANCELADO').AsString := 'S';
+      xFbMovimentoCupom.ExecSQL;
+      LimpaCampos;
+    end;
+  end
+  else
+    ShowMessage('Nenhum cupom aberto!' + #13 + ' Para cancelar um cupom já finalizado, usar o monitor de cupom fiscal.')
 end;
 
 procedure TFMovimentoEntrada.CancelarItem;
@@ -574,7 +619,7 @@ begin
     FreeAndNil(xFdQuery);
   end;
 
-  EdUnidadeMedida.SetFocus;
+  EdDataFabricacao.SetFocus;
 end;
 
 procedure TFMovimentoEntrada.BtAdicionarProdutoClick(Sender: TObject);
@@ -710,6 +755,20 @@ begin
     EdNome.SetFocus;
 end;
 
+procedure TFMovimentoEntrada.EdDataFabricacaoKeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+  if key = 13 then // Tecla Enter
+    EdUnidadeMedida.SetFocus;
+end;
+
+procedure TFMovimentoEntrada.EdDataValidadeKeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+  if key = 13 then // Tecla Enter
+    BtAdicionarProduto.SetFocus;
+end;
+
 procedure TFMovimentoEntrada.EdNomeKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
@@ -722,7 +781,14 @@ begin
   if EdPrecoProduto.Text = '' then
     EdPrecoProduto.Text := '0';
 
-  EdPrecoUnit.Text := FormatFloat('#0.00', StrToFloat(EdPrecoProduto.Text) * StrToFloat(EdQuantidade.Text));  EdPrecoUnit.Text := FormatFloat('#0.00', StrToFloat(EdPrecoProduto.Text) / StrToFloat(EdQuantidade.Text));
+  EdPrecoUnit.Text := FormatFloat('#0.00', StrToFloat(EdPrecoProduto.Text) / StrToFloat(EdQuantidade.Text));
+end;
+
+procedure TFMovimentoEntrada.EdPrecoProdutoKeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+  if key = 13 then // Tecla Enter
+    EdDataValidade.SetFocus;
 end;
 
 procedure TFMovimentoEntrada.EdQuantidadeChange(Sender: TObject);
@@ -730,7 +796,21 @@ begin
   if EdQuantidade.Text = '' then
     EdQuantidade.Text := '0';
 
-  EdPrecoUnit.Text := FormatFloat('#0.00', StrToFloat(EdPrecoProduto.Text) * StrToFloat(EdQuantidade.Text));
+  CalculaPrecoUnitario;
+end;
+
+procedure TFMovimentoEntrada.EdQuantidadeKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if key = 13 then // Tecla Enter
+    EdPrecoProduto.SetFocus;
+end;
+
+procedure TFMovimentoEntrada.EdUnidadeMedidaKeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+  if key = 13 then // Tecla Enter
+    EdQuantidade.SetFocus;
 end;
 
 procedure TFMovimentoEntrada.EdValorPagamentoChange(Sender: TObject);
@@ -786,6 +866,15 @@ begin
   EdValorCompraItem.Text := '0';
   EdPrecoUnit.Text := '0';
   EdPrecoProduto.Text := '0';
+end;
+
+procedure TFMovimentoEntrada.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if key = 67 then
+  begin
+    CancelarCupom;
+  end;
 end;
 
 procedure TFMovimentoEntrada.FormShow(Sender: TObject);
@@ -935,6 +1024,18 @@ begin
   EdDataValidade.Date := now;
   EdPErDesc.Text := '0%';
   EdValorCompraItem.Text := '0';
+end;
+
+procedure TFMovimentoEntrada.LimpaCampos;
+begin
+
+  LimpaCampoProduto;
+  EdCodigo.Text := '';
+  FSequenciaMovimento := 0;
+  FParceria := 0;
+  Tsgeral.TabIndex := 0;
+  EdCodigo.SetFocus;
+  EdNome.Text := '';
 end;
 
 procedure TFMovimentoEntrada.PesquisaProduto;

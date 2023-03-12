@@ -24,7 +24,7 @@ object FMovimentoEntrada: TFMovimentoEntrada
     Top = 0
     Width = 1871
     Height = 709
-    ActivePage = TsPagamento
+    ActivePage = TsItem
     Align = alClient
     TabOrder = 0
     OnChange = TsgeralChange

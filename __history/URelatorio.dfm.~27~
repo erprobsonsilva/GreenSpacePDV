@@ -191,7 +191,6 @@ object FRelatorio: TFRelatorio
     end
   end
   object FdGeral: TFDQuery
-    Active = True
     Connection = dm.ConnectionPostgres
     SQL.Strings = (
       
@@ -214,21 +213,15 @@ object FRelatorio: TFRelatorio
     ParamData = <
       item
         Name = 'COD_PRODUTO'
-        DataType = ftInteger
         ParamType = ptInput
-        Value = Null
       end
       item
         Name = 'DATA_MOVIMENTO_INI'
-        DataType = ftDate
         ParamType = ptInput
-        Value = 44986d
       end
       item
         Name = 'DATA_MOVIMENTO_FIM'
-        DataType = ftDateTime
         ParamType = ptInput
-        Value = 44997d
       end>
   end
   object DsGeral: TDataSource

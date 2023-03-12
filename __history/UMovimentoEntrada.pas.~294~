@@ -264,8 +264,8 @@ begin
     Exit;
   end;
 
-//  if MessageDlg('Deseja relamente excluir do cupom?', mtConfirmation, [mbYes, mbNo],0) = mrYes then
-//  begin
+  if MessageDlg('Deseja relamente excluir do cupom?', mtConfirmation, [mbYes, mbNo],0) = mrYes then
+  begin
     Try
       RelatorioVendaFiscal := TFRelatorioVendaFiscal.Create(nil);
       RelatorioVendaFiscal.FdGeral.ParamByName('cod_movimento').AsInteger := FSequenciaMovimento;
@@ -273,7 +273,7 @@ begin
     Finally
       FreeAndNil(RelatorioVendaFiscal);
     End;
-  //end;
+  end;
   LimpaCampos;
 end;
 

@@ -12,7 +12,7 @@ uses
   URelatorioFiltro in 'URelatorioFiltro.pas' {FRelatorioFiltro},
   URelatorioVendaPagamento in 'URelatorioVendaPagamento.pas' {FRelatorioVendaPagamento},
   UPesquisa in 'UPesquisa.pas' {FPesquisa},
-  URelatorioVendaFiscal in 'URelatorioVendaFiscal.pas' {FRelatorioVendaFiscal};
+  URelatorioVendaFiscal in 'URelatorioVendaFiscal.pas' {Form1};
 
 {$R *.res}
 
@@ -24,6 +24,6 @@ begin
   Application.CreateForm(TFRelatorioFiltro, FRelatorioFiltro);
   Application.CreateForm(TFRelatorioVendaPagamento, FRelatorioVendaPagamento);
   Application.CreateForm(TFPesquisa, FPesquisa);
-  Application.CreateForm(TFRelatorioVendaFiscal, FRelatorioVendaFiscal);
+  Application.CreateForm(TForm1, Form1);
   Application.Run;
 end.

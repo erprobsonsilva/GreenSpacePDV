@@ -264,16 +264,17 @@ begin
     Exit;
   end;
 
-//  if MessageDlg('Deseja relamente excluir do cupom?', mtConfirmation, [mbYes, mbNo],0) = mrYes then
-//  begin
+  if MessageDlg('Deseja relamente excluir do cupom?', mtConfirmation, [mbYes, mbNo],0) = mrYes then
+  begin
     Try
       RelatorioVendaFiscal := TFRelatorioVendaFiscal.Create(nil);
       RelatorioVendaFiscal.FdGeral.ParamByName('cod_movimento').AsInteger := FSequenciaMovimento;
-      RelatorioVendaFiscal.RLReport2.Preview;
+      RelatorioVendaFiscal.RLReport2.PrinterName := 'Imp58';
+      RelatorioVendaFiscal.RLReport2.Print;
     Finally
       FreeAndNil(RelatorioVendaFiscal);
     End;
-  //end;
+  end;
   LimpaCampos;
 end;
 

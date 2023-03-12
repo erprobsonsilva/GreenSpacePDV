@@ -44,7 +44,9 @@ type
     Button3: TButton;
     Label7: TLabel;
     DtpCupomVendaIni: TDateTimePicker;
-    BtFiltroCupomVenda: TButton;
+    Label8: TLabel;
+    DtpCupomVendaFim: TDateTimePicker;
+    Button4: TButton;
     procedure Button2Click(Sender: TObject);
     procedure EdCodProdutoExit(Sender: TObject);
     procedure EdCodProdutoKeyDown(Sender: TObject; var Key: Word;
@@ -53,7 +55,6 @@ type
     procedure FormCreate(Sender: TObject);
     procedure PageControl1Change(Sender: TObject);
     procedure Button3Click(Sender: TObject);
-    procedure BtFiltroCupomVendaClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -175,13 +176,6 @@ begin
   End;
 end;
 
-procedure TFRelatorioFiltro.BtFiltroCupomVendaClick(Sender: TObject);
-begin
-  FDCupomFiscal.Close;
-  FDCupomFiscal.ParamByName('data_movimento').AsDate := DtpCupomVendaIni.Date;
-  FDCupomFiscal.Open;
-end;
-
 procedure TFRelatorioFiltro.EdCodProdutoExit(Sender: TObject);
 begin
   AtualizaProduto;
@@ -208,7 +202,9 @@ end;
 
 procedure TFRelatorioFiltro.PageControl1Change(Sender: TObject);
 begin
-  BtFiltroCupomVenda.Click;
+  FDCupomFiscal.Close;
+  FDCupomFiscal.ParamByName('data_movimento').AsDate := now;
+  FDCupomFiscal.Open;
 end;
 
 end.

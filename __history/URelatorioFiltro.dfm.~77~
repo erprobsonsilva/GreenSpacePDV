@@ -264,9 +264,9 @@ object FRelatorioFiltro: TFRelatorioFiltro
       ImageIndex = 2
       object DbCupomFiscal: TDBGrid
         Left = 0
-        Top = 49
+        Top = 89
         Width = 881
-        Height = 395
+        Height = 355
         Align = alClient
         DataSource = DsCupomFiscal
         TabOrder = 0
@@ -280,7 +280,7 @@ object FRelatorioFiltro: TFRelatorioFiltro
         Left = 0
         Top = 0
         Width = 881
-        Height = 49
+        Height = 89
         Align = alTop
         TabOrder = 1
         object Label7: TLabel
@@ -296,9 +296,22 @@ object FRelatorioFiltro: TFRelatorioFiltro
           Font.Style = []
           ParentFont = False
         end
+        object Label8: TLabel
+          Left = 11
+          Top = 47
+          Width = 98
+          Height = 24
+          Caption = 'Data Final:'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -20
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+        end
         object Button3: TButton
-          Left = 424
-          Top = -1
+          Left = 422
+          Top = 37
           Width = 123
           Height = 41
           Caption = 'Visualizar'
@@ -311,7 +324,7 @@ object FRelatorioFiltro: TFRelatorioFiltro
           TabOrder = 0
           OnClick = Button3Click
         end
-        object DtpCupomVendaIni: TDateTimePicker
+        object DateTimePicker1: TDateTimePicker
           Left = 112
           Top = 6
           Width = 177
@@ -326,9 +339,24 @@ object FRelatorioFiltro: TFRelatorioFiltro
           ParentFont = False
           TabOrder = 1
         end
-        object BtFiltroCupomVenda: TButton
+        object DateTimePicker2: TDateTimePicker
+          Left = 112
+          Top = 45
+          Width = 177
+          Height = 32
+          Date = 44990.000000000000000000
+          Time = 0.791623101853474500
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -20
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 2
+        end
+        object Button4: TButton
           Left = 295
-          Top = -1
+          Top = 37
           Width = 123
           Height = 41
           Caption = 'Filtrar'
@@ -338,8 +366,8 @@ object FRelatorioFiltro: TFRelatorioFiltro
           Font.Name = 'Tahoma'
           Font.Style = []
           ParentFont = False
-          TabOrder = 2
-          OnClick = BtFiltroCupomVendaClick
+          TabOrder = 3
+          OnClick = Button3Click
         end
       end
     end

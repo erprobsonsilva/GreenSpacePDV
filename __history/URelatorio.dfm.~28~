@@ -191,7 +191,6 @@ object FRelatorio: TFRelatorio
     end
   end
   object FdGeral: TFDQuery
-    Active = True
     Connection = dm.ConnectionPostgres
     SQL.Strings = (
       

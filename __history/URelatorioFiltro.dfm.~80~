@@ -326,7 +326,7 @@ object FRelatorioFiltro: TFRelatorioFiltro
           ParentFont = False
           TabOrder = 1
         end
-        object BtFiltroCupomVenda: TButton
+        object Button4: TButton
           Left = 295
           Top = -1
           Width = 123
@@ -339,7 +339,7 @@ object FRelatorioFiltro: TFRelatorioFiltro
           Font.Style = []
           ParentFont = False
           TabOrder = 2
-          OnClick = BtFiltroCupomVendaClick
+          OnClick = Button3Click
         end
       end
     end

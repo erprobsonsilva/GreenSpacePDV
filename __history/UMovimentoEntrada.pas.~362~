@@ -162,8 +162,6 @@ type
     procedure EdCpfCnpjExit(Sender: TObject);
     procedure CbParceriaEntidadeKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
-    procedure EdNomeEntidadeExit(Sender: TObject);
-    procedure EdNomeExit(Sender: TObject);
   private
     { Private declarations }
     procedure AtualizarProduto;
@@ -848,15 +846,12 @@ begin
     exit;
   end;
 
-  if (Length(EdCodigo.Text) < 10) then
+  if (Length(EdCodigo.Text) < 10) and (StrToInt(EdCodigo.Text) = 0) then
   begin
-    if StrToInt(EdCodigo.Text) = 0 then
-    begin
-      EdCpfCnpj.Enabled := True;
-      EdNome.Enabled := True;
-      CbParceria.Enabled := True;
-      EdCpfCnpj.SetFocus;
-    end;
+    EdCpfCnpj.Enabled := True;
+    EdNome.Enabled := True;
+    CbParceria.Enabled := True;
+    EdCpfCnpj.SetFocus;
   end
   else
   begin
@@ -933,21 +928,11 @@ begin
     BtAdicionarProduto.SetFocus;
 end;
 
-procedure TFMovimentoEntrada.EdNomeEntidadeExit(Sender: TObject);
-begin
-  CbParceriaEntidade.SetFocus;
-end;
-
 procedure TFMovimentoEntrada.EdNomeEntidadeKeyDown(Sender: TObject;
   var Key: Word; Shift: TShiftState);
 begin
   if key = 13 then // Tecla Enter
     CbParceriaEntidade.SetFocus;
-end;
-
-procedure TFMovimentoEntrada.EdNomeExit(Sender: TObject);
-begin
-  CbParceriaEntidade.SetFocus;
 end;
 
 procedure TFMovimentoEntrada.EdNomeKeyDown(Sender: TObject; var Key: Word;

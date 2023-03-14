@@ -3,7 +3,6 @@ inherited FMovimentoVenda: TFMovimentoVenda
   PixelsPerInch = 96
   TextHeight = 13
   inherited Tsgeral: TPageControl
-    ActivePage = TsMovimento
     inherited TsMovimento: TTabSheet
       inherited Panel1: TPanel
         inherited Label10: TLabel

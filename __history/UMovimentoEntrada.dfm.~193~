@@ -24,7 +24,7 @@ object FMovimentoEntrada: TFMovimentoEntrada
     Top = 0
     Width = 1871
     Height = 709
-    ActivePage = TsMovimento
+    ActivePage = TsItem
     Align = alClient
     TabOrder = 0
     OnChange = TsgeralChange
@@ -120,7 +120,6 @@ object FMovimentoEntrada: TFMovimentoEntrada
           Font.Style = []
           ParentFont = False
           TabOrder = 2
-          OnExit = EdNomeExit
           OnKeyDown = EdNomeKeyDown
         end
         object BtCompra: TButton
@@ -152,7 +151,6 @@ object FMovimentoEntrada: TFMovimentoEntrada
           Font.Style = []
           ParentFont = False
           TabOrder = 1
-          OnExit = EdCpfCnpjExit
           OnKeyDown = EdCpfCnpjKeyDown
         end
         object CbParceria: TComboBox
@@ -651,7 +649,6 @@ object FMovimentoEntrada: TFMovimentoEntrada
         Font.Style = []
         ParentFont = False
         TabOrder = 15
-        OnExit = EdCpfCnpjEntidadeExit
         OnKeyDown = EdCpfCnpjEntidadeKeyDown
       end
       object EdNomeEntidade: TEdit
@@ -668,7 +665,6 @@ object FMovimentoEntrada: TFMovimentoEntrada
         Font.Style = []
         ParentFont = False
         TabOrder = 16
-        OnExit = EdNomeEntidadeExit
         OnKeyDown = EdNomeEntidadeKeyDown
       end
       object CbParceriaEntidade: TComboBox
@@ -688,7 +684,7 @@ object FMovimentoEntrada: TFMovimentoEntrada
         TabOrder = 17
         Text = 'NENHUM'
         OnExit = CbParceriaEntidadeExit
-        OnKeyDown = CbParceriaEntidadeKeyDown
+        OnKeyDown = CbParceriaKeyDown
         Items.Strings = (
           'NENHUM'
           'IMPACTO ACADEMIA')

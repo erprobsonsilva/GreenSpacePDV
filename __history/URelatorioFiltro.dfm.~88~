@@ -353,7 +353,7 @@ object FRelatorioFiltro: TFRelatorioFiltro
           Font.Style = []
           ParentFont = False
           TabOrder = 3
-          OnClick = Button4Click
+          OnClick = Button3Click
         end
       end
     end

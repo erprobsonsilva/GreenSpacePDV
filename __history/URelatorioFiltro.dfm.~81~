@@ -31,6 +31,8 @@ object FRelatorioFiltro: TFRelatorioFiltro
     ParentFont = False
     TabOrder = 0
     OnChange = PageControl1Change
+    ExplicitLeft = 16
+    ExplicitTop = 8
     object TsProduto: TTabSheet
       Caption = 'Produto'
       object Label1: TLabel
@@ -267,7 +269,6 @@ object FRelatorioFiltro: TFRelatorioFiltro
         Height = 395
         Align = alClient
         DataSource = DsCupomFiscal
-        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
@@ -340,90 +341,64 @@ object FRelatorioFiltro: TFRelatorioFiltro
           TabOrder = 2
           OnClick = BtFiltroCupomVendaClick
         end
-        object Button4: TButton
-          Left = 664
-          Top = -1
-          Width = 211
-          Height = 41
-          Caption = 'Cancelar Cupom'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -27
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 3
-          OnClick = Button4Click
-        end
       end
     end
   end
   object DsCupomFiscal: TDataSource
     DataSet = FDCupomFiscal
-    Left = 808
+    Left = 664
     Top = 8
   end
   object FDCupomFiscal: TFDQuery
     Connection = dm.ConnectionPostgres
     SQL.Strings = (
-      'select m.cod_movimento, m.data_movimento, '
-      '       ( select sum(preco)'
-      '           from movimento_item im'
-      '          where im.cod_movimento = m.cod_movimento'
-      '            and im.flg_cancelado = '#39'N'#39') preco,'
-      '       e.cpf_cnpj, e.nome'
-      '  from movimento m,'
-      '       entidade e'
-      ' where m.cod_entidade = e.cod_entidade'
-      '   and m.data_movimento = :data_movimento'
-      '   and m.flg_cancelado = '#39'N'#39)
-    Left = 724
-    Top = 11
+      'select *'
+      '  from movimento'
+      ' where data_movimento = :data_movimento'
+      '   and flg_cancelado = '#39'N'#39)
+    Left = 588
+    Top = 3
     ParamData = <
       item
         Name = 'DATA_MOVIMENTO'
         DataType = ftDate
         ParamType = ptInput
-        Value = 44633d
+        Value = 44997d
       end>
     object FDCupomFiscalcod_movimento: TFMTBCDField
-      DisplayLabel = 'Movimento'
-      DisplayWidth = 10
+      DisplayLabel = 'C'#243'digo'
+      DisplayWidth = 7
       FieldName = 'cod_movimento'
       Origin = 'cod_movimento'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
       Precision = 15
       Size = 0
     end
+    object FDCupomFiscaltipo_movimento: TWideStringField
+      FieldName = 'tipo_movimento'
+      Origin = 'tipo_movimento'
+      Visible = False
+      Size = 1
+    end
+    object FDCupomFiscalcod_entidade: TFMTBCDField
+      DisplayLabel = 'Entidade'
+      DisplayWidth = 20
+      FieldName = 'cod_entidade'
+      Origin = 'cod_entidade'
+      Visible = False
+      Precision = 15
+      Size = 0
+    end
     object FDCupomFiscaldata_movimento: TDateField
-      DisplayLabel = 'Data'
+      DisplayLabel = 'Data movimento'
       FieldName = 'data_movimento'
       Origin = 'data_movimento'
     end
-    object FDCupomFiscalpreco: TFMTBCDField
-      AutoGenerateValue = arDefault
-      DisplayLabel = 'Total Cupom'
-      DisplayWidth = 10
-      FieldName = 'preco'
-      Origin = 'preco'
-      ReadOnly = True
-      DisplayFormat = 'R$ #,,0.00'
-      Precision = 64
-      Size = 0
-    end
-    object FDCupomFiscalcpf_cnpj: TWideStringField
-      AutoGenerateValue = arDefault
-      DisplayLabel = 'CPF/CNPJ'
-      FieldName = 'cpf_cnpj'
-      Origin = 'cpf_cnpj'
-      Size = 16
-    end
-    object FDCupomFiscalnome: TWideStringField
-      AutoGenerateValue = arDefault
-      DisplayLabel = 'Nome'
-      FieldName = 'nome'
-      Origin = 'nome'
-      Size = 22
+    object FDCupomFiscalflg_cancelado: TWideStringField
+      FieldName = 'flg_cancelado'
+      Origin = 'flg_cancelado'
+      Visible = False
+      Size = 1
     end
   end
 end

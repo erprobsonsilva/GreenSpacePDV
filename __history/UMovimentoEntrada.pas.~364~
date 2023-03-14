@@ -163,7 +163,6 @@ type
     procedure CbParceriaEntidadeKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure EdNomeEntidadeExit(Sender: TObject);
-    procedure EdNomeExit(Sender: TObject);
   private
     { Private declarations }
     procedure AtualizarProduto;
@@ -943,11 +942,6 @@ procedure TFMovimentoEntrada.EdNomeEntidadeKeyDown(Sender: TObject;
 begin
   if key = 13 then // Tecla Enter
     CbParceriaEntidade.SetFocus;
-end;
-
-procedure TFMovimentoEntrada.EdNomeExit(Sender: TObject);
-begin
-  CbParceriaEntidade.SetFocus;
 end;
 
 procedure TFMovimentoEntrada.EdNomeKeyDown(Sender: TObject; var Key: Word;

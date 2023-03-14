@@ -45,7 +45,6 @@ type
     FDCupomFiscalpreco: TFMTBCDField;
     FDCupomFiscalcpf_cnpj: TWideStringField;
     FDCupomFiscalnome: TWideStringField;
-    Button4: TButton;
     procedure Button2Click(Sender: TObject);
     procedure EdCodProdutoExit(Sender: TObject);
     procedure EdCodProdutoKeyDown(Sender: TObject; var Key: Word;
@@ -55,7 +54,6 @@ type
     procedure PageControl1Change(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure BtFiltroCupomVendaClick(Sender: TObject);
-    procedure Button4Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -175,25 +173,6 @@ begin
   Finally
     FreeAndNil(RelatorioVendaFiscal);
   End;
-end;
-
-procedure TFRelatorioFiltro.Button4Click(Sender: TObject);
-var
-  xFbMovimentoCupom : TFDQuery;
-begin
-  if MessageDlg('Deseja relamente excluir do cupom?', mtConfirmation, [mbYes, mbNo],0) = mrYes then
-  begin
-    xFbMovimentoCupom := TFDQuery.Create(nil);
-    xFbMovimentoCupom.Connection := dm.ConnectionPostgres;
-    xFbMovimentoCupom.SQL.Add(' UPDATE movimento SET ');
-    xFbMovimentoCupom.SQL.Add('         FLG_CANCELADO     = :FLG_CANCELADO ');
-    xFbMovimentoCupom.SQL.Add('  WHERE COD_MOVIMENTO      = :COD_MOVIMENTO ');
-
-    xFbMovimentoCupom.ParamByName('cod_movimento').AsInteger := DbCupomFiscal.DataSource.DataSet.FieldByName('COD_MOVIMENTO').AsInteger;
-    xFbMovimentoCupom.ParamByName('FLG_CANCELADO').AsString := 'S';
-    xFbMovimentoCupom.ExecSQL;
-    FDCupomFiscal.Refresh;
-  end;
 end;
 
 procedure TFRelatorioFiltro.BtFiltroCupomVendaClick(Sender: TObject);

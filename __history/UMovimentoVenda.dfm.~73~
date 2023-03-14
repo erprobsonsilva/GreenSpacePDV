@@ -3,7 +3,6 @@ inherited FMovimentoVenda: TFMovimentoVenda
   PixelsPerInch = 96
   TextHeight = 13
   inherited Tsgeral: TPageControl
-    ActivePage = TsMovimento
     inherited TsMovimento: TTabSheet
       inherited Panel1: TPanel
         inherited Label10: TLabel
@@ -102,10 +101,7 @@ inherited FMovimentoVenda: TFMovimentoVenda
       end
       inherited LbFornecedor: TLabel
         Left = 40
-        Width = 69
-        Caption = 'Cliente:'
         ExplicitLeft = 40
-        ExplicitWidth = 69
       end
       inherited Label11: TLabel
         Left = 831
@@ -242,7 +238,9 @@ inherited FMovimentoVenda: TFMovimentoVenda
     end
     inherited TsPagamento: TTabSheet
       inherited EdValorTroco: TEdit
+        Height = 32
         Font.Height = -20
+        ExplicitHeight = 32
       end
       inherited DbGridPagamento: TDBGrid
         Height = 327

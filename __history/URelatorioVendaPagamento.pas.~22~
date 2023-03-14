@@ -47,7 +47,6 @@ implementation
 procedure TFRelatorioVendaPagamento.RLReport1BeforePrint(Sender: TObject;
   var PrintIt: Boolean);
 begin
-  FdGeral.Close;
   FdGeral.Open;
 end;
 

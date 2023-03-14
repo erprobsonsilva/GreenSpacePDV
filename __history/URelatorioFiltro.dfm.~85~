@@ -267,7 +267,6 @@ object FRelatorioFiltro: TFRelatorioFiltro
         Height = 395
         Align = alClient
         DataSource = DsCupomFiscal
-        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
@@ -339,21 +338,6 @@ object FRelatorioFiltro: TFRelatorioFiltro
           ParentFont = False
           TabOrder = 2
           OnClick = BtFiltroCupomVendaClick
-        end
-        object Button4: TButton
-          Left = 664
-          Top = -1
-          Width = 211
-          Height = 41
-          Caption = 'Cancelar Cupom'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -27
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 3
-          OnClick = Button4Click
         end
       end
     end

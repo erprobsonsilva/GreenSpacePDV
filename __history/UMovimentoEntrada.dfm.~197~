@@ -120,7 +120,6 @@ object FMovimentoEntrada: TFMovimentoEntrada
           Font.Style = []
           ParentFont = False
           TabOrder = 2
-          OnExit = EdNomeExit
           OnKeyDown = EdNomeKeyDown
         end
         object BtCompra: TButton
@@ -668,7 +667,6 @@ object FMovimentoEntrada: TFMovimentoEntrada
         Font.Style = []
         ParentFont = False
         TabOrder = 16
-        OnExit = EdNomeEntidadeExit
         OnKeyDown = EdNomeEntidadeKeyDown
       end
       object CbParceriaEntidade: TComboBox

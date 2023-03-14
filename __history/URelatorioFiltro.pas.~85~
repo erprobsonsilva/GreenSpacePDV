@@ -192,7 +192,6 @@ begin
     xFbMovimentoCupom.ParamByName('cod_movimento').AsInteger := DbCupomFiscal.DataSource.DataSet.FieldByName('COD_MOVIMENTO').AsInteger;
     xFbMovimentoCupom.ParamByName('FLG_CANCELADO').AsString := 'S';
     xFbMovimentoCupom.ExecSQL;
-    FDCupomFiscal.Refresh;
   end;
 end;
 

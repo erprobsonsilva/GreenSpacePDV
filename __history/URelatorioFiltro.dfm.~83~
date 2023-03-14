@@ -21,7 +21,7 @@ object FRelatorioFiltro: TFRelatorioFiltro
     Top = 0
     Width = 889
     Height = 483
-    ActivePage = TSCupomVenda
+    ActivePage = TsResumoVenda
     Align = alClient
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -267,7 +267,6 @@ object FRelatorioFiltro: TFRelatorioFiltro
         Height = 395
         Align = alClient
         DataSource = DsCupomFiscal
-        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
         TabOrder = 0
         TitleFont.Charset = DEFAULT_CHARSET
         TitleFont.Color = clWindowText
@@ -340,21 +339,6 @@ object FRelatorioFiltro: TFRelatorioFiltro
           TabOrder = 2
           OnClick = BtFiltroCupomVendaClick
         end
-        object Button4: TButton
-          Left = 664
-          Top = -1
-          Width = 211
-          Height = 41
-          Caption = 'Cancelar Cupom'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -27
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          TabOrder = 3
-          OnClick = Button4Click
-        end
       end
     end
   end
@@ -375,20 +359,12 @@ object FRelatorioFiltro: TFRelatorioFiltro
       '  from movimento m,'
       '       entidade e'
       ' where m.cod_entidade = e.cod_entidade'
-      '   and m.data_movimento = :data_movimento'
+      '   and m.data_movimento = '#39'11/03/2023'#39
       '   and m.flg_cancelado = '#39'N'#39)
     Left = 724
     Top = 11
-    ParamData = <
-      item
-        Name = 'DATA_MOVIMENTO'
-        DataType = ftDate
-        ParamType = ptInput
-        Value = 44633d
-      end>
     object FDCupomFiscalcod_movimento: TFMTBCDField
       DisplayLabel = 'Movimento'
-      DisplayWidth = 10
       FieldName = 'cod_movimento'
       Origin = 'cod_movimento'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
@@ -403,7 +379,6 @@ object FRelatorioFiltro: TFRelatorioFiltro
     object FDCupomFiscalpreco: TFMTBCDField
       AutoGenerateValue = arDefault
       DisplayLabel = 'Total Cupom'
-      DisplayWidth = 10
       FieldName = 'preco'
       Origin = 'preco'
       ReadOnly = True
